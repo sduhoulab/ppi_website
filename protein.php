@@ -208,16 +208,20 @@ $domains = $stmt->fetchAll();
                       <span class="stat-number"><?= $sequence_length?></span>
                       <span class="stat-label">Sequence Length</span>
                     </div>
+                    <div class="stat-item">
+                      <span class="stat-number"><?= $organism?></span>
+                      <span class="stat-label">Organism</span>
+                    </div>
                   </div>
                 </div>
 
                 <div class="quick-info-card">
                   <h4>Protein Information</h4>
                   <div class="info-grid">
-                    <div class="info-row">
+                    <!-- <div class="info-row">
                       <span class="label">Organism:</span>
                       <span class="value"><?= $organism?></span>
-                    </div>
+                    </div> -->
                     <div class="info-row">
                       <span class="label">Function:</span>
                       <span class="value"></span>
