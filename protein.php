@@ -52,6 +52,41 @@ $stmt->bindParam(':uniprotId1', $uniprotId);
 $stmt->bindParam(':uniprotId2', $uniprotId);
 $stmt->execute();
 $pairs = $stmt->fetchAll();
+foreach ($pairs as &$pair) {
+    $input = $pair['interface_residues1'];
+
+    $parts = explode(',', $input);
+    $result = [];
+
+    $numbers = [];
+
+    // Extract numeric residue numbers
+    foreach ($parts as $part) {
+        $numbers[] = (int) preg_replace('/[^0-9]/', '', $part);
+    }
+
+    // Group consecutive numbers
+    $start = $numbers[0];
+    $prev  = $numbers[0];
+
+    for ($i = 1; $i <= count($numbers); $i++) {
+        if ($i === count($numbers) || $numbers[$i] !== $prev + 1) {
+            $result[] = [
+                'struct_asym_id' => 'A',
+                'start_residue_number' => $start,
+                'end_residue_number' => $prev
+            ];
+            if ($i < count($numbers)) {
+                $start = $numbers[$i];
+            }
+        }
+        if ($i < count($numbers)) {
+            $prev = $numbers[$i];
+        }
+    }
+
+    $pair['residues'] = $result;
+}
 
 error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
 $filename = 'scores/'.$uniprotId.'.txt';
@@ -156,6 +191,87 @@ $domains = $stmt->fetchAll();
 @media (max-width:767px){ .seq-line{ font-size:13px; } }
 
 </style>
+
+<script type="importmap">
+  {
+    "imports": {
+      "@nightingale-elements/": "https://cdn.jsdelivr.net/npm/@nightingale-elements/"
+    }
+  }
+</script>
+
+<style>
+  td {
+    padding: 5px;
+  }
+  td:first-child {
+    background-color: lightcyan;
+    font: 0.8em sans-serif;
+    white-space: nowrap;
+  }
+  td:nth-child(2) {
+    background-color: aliceblue;
+  }
+  tr:nth-child(-n + 3) > td {
+    background-color: transparent;
+  }
+</style>
+
+<script type="module">
+  import "@nightingale-elements/nightingale-sequence@latest";
+  import "@nightingale-elements/nightingale-track@latest";
+  import "@nightingale-elements/nightingale-manager@latest";
+  import "@nightingale-elements/nightingale-navigation@latest";
+  import "@nightingale-elements/nightingale-colored-sequence@latest";
+  
+  const accession = "<?= $uniprot_id ?>";
+  
+  // Load feature and variation data from Proteins API
+  const featuresData = await (
+    await fetch("https://www.ebi.ac.uk/proteins/api/features/" + accession)
+  ).json();
+  
+  customElements.whenDefined("nightingale-sequence").then(() => {
+    const seq = document.querySelector("#sequence");
+    seq.data = featuresData.sequence;
+  });
+  
+  customElements.whenDefined("nightingale-colored-sequence").then(() => {
+    const coloredSeq = document.querySelector("#colored-sequence");
+    coloredSeq.data = featuresData.sequence;
+  }); 
+  
+  customElements.whenDefined("nightingale-track").then(() => {
+    // Nightingale expects start rather than the API's begin
+    const features = featuresData.features.map((ft) => ({
+      ...ft,
+      start: ft.start || ft.begin,
+    }));
+  
+    // Filter the data for each feature type and assign to the relevant track data
+    const domain = document.querySelector("#domain");
+    domain.data = features.filter(({ type }) => type === "DOMAIN");
+  
+    const region = document.querySelector("#region");
+    region.data = features.filter(({ type }) => type === "REGION");
+  
+    const site = document.querySelector("#site");
+    site.data = features.filter(({ type }) => type === "SITE");
+  
+    const binding = document.querySelector("#binding");
+    binding.data = features.filter(({ type }) => type === "BINDING");
+ 
+    const chain = document.querySelector("#chain");
+    chain.data = features.filter(({ type }) => type === "CHAIN");
+ 
+    const disulfide = document.querySelector("#disulfide-bond");
+    disulfide.data = features.filter(({ type }) => type === "DISULFID");
+ 
+    const betaStrand = document.querySelector("#beta-strand");
+    betaStrand.data = features.filter(({ type }) => type === "STRAND");
+  });
+</script>
+
 </head>
 
 <body class="index-page">
@@ -274,8 +390,172 @@ $domains = $stmt->fetchAll();
                 </div>
               </div>
             </div>
+            <!-- Prediction score section end -->
 
-            
+            <!-- Sequence Predictions START -->
+            <div id="nightingale-div" class="card shadow-sm mb-4 p-3">
+<nightingale-manager>
+  <table>
+    <tbody>
+      <tr>
+        <td></td>
+        <td>
+          <nightingale-navigation
+            id="navigation"
+            min-width="400"
+            height="40"
+            length="<?= $sequence_length ?>"
+            display-start="1"
+            display-end="<?= $sequence_length ?>"
+            margin-color="white"
+          ></nightingale-navigation>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <nightingale-sequence
+            id="sequence"
+            min-width="400"
+            height="40"
+            length="<?= $sequence_length ?>"
+            display-start="1"
+            display-end="<?= $sequence_length ?>"
+            margin-color="white"
+            highlight-event="onmouseover"
+          ></nightingale-sequence>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <nightingale-colored-sequence
+            id="colored-sequence"
+            min-width="400"
+            height="15"
+            length="<?= $sequence_length ?>"
+            display-start="1"
+            display-end="<?= $sequence_length ?>"
+            scale="hydrophobicity-scale"
+            margin-color="white"
+            highlight-event="onmouseover"
+          >
+          </nightingale-colored-sequence>
+        </td>
+      </tr>
+      <tr>
+        <td>Domain</td>
+        <td>
+          <nightingale-track
+            id="domain"
+            min-width="400"
+            height="15"
+            length="<?= $sequence_length ?>"
+            display-start="1"
+            display-end="<?= $sequence_length ?>"
+            margin-color="aliceblue"
+            highlight-event="onmouseover"
+          ></nightingale-track>
+        </td>
+      </tr>
+      <tr>
+        <td>Region</td>
+        <td>
+          <nightingale-track
+            id="region"
+            min-width="400"
+            height="15"
+            length="<?= $sequence_length ?>"
+            display-start="1"
+            display-end="<?= $sequence_length ?>"
+            margin-color="aliceblue"
+            highlight-event="onmouseover"
+          ></nightingale-track>
+        </td>
+      </tr>
+      <tr>
+        <td>Site</td>
+        <td>
+          <nightingale-track
+            id="site"
+            min-width="400"
+            height="15"
+            length="<?= $sequence_length ?>"
+            display-start="1"
+            display-end="<?= $sequence_length ?>"
+            margin-color="aliceblue"
+            highlight-event="onmouseover"
+          ></nightingale-track>
+        </td>
+      </tr>
+      <tr>
+        <td>Chain</td>
+        <td>
+          <nightingale-track
+            id="chain"
+            layout="non-overlapping"
+            min-width="400"
+            height="15"
+            length="<?= $sequence_length ?>"
+            display-start="1"
+            display-end="<?= $sequence_length ?>"
+            margin-color="aliceblue"
+            highlight-event="onmouseover"
+          ></nightingale-track>
+        </td>
+      </tr>
+      <tr>
+        <td>Binding site</td>
+        <td>
+          <nightingale-track
+            id="binding"
+            min-width="400"
+            height="15"
+            length="<?= $sequence_length ?>"
+            display-start="1"
+            display-end="<?= $sequence_length ?>"
+            margin-color="aliceblue"
+            highlight-event="onmouseover"
+          ></nightingale-track>
+        </td>
+      </tr>
+      <tr>
+        <td>Disulfide bond</td>
+        <td>
+          <nightingale-track
+            id="disulfide-bond"
+            layout="non-overlapping"
+            min-width="400"
+            height="15"
+            length="<?= $sequence_length ?>"
+            display-start="1"
+            display-end="<?= $sequence_length ?>"
+            margin-color="aliceblue"
+            highlight-event="onmouseover"
+          ></nightingale-track>
+        </td>
+      </tr>
+      <tr>
+        <td>Beta strand</td>
+        <td>
+          <nightingale-track
+            id="beta-strand"
+            min-width="400"
+            height="15"
+            length="<?= $sequence_length ?>"
+            display-start="1"
+            display-end="<?= $sequence_length ?>"
+            margin-color="aliceblue"
+            highlight-event="onmouseover"
+          ></nightingale-track>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</nightingale-manager>
+            </div>
+
+            <!-- Sequence Predictions END -->
 
         </div>
           
@@ -290,13 +570,14 @@ $domains = $stmt->fetchAll();
                 <table class="table table-striped table-hover mt-5">
                   <thead class="table-success">
                     <tr>
-                      <th scope="col" colspan="2">Interaction partners from PDB</th>
+                      <th scope="col" colspan="3">Interaction partners from PDB</th>
                     </tr>
                   </thead>
                   <thead class="table-primary">
                     <tr>
                       <th scope="col">Protein A</th>
                       <th scope="col">Protein B</th>
+                      <th></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -306,6 +587,7 @@ $domains = $stmt->fetchAll();
                       <tr>
                         <td><?= htmlspecialchars($pair['uniprot1']) ?></td>
                         <td><?= htmlspecialchars($pair['uniprot2']) ?></td>
+                        <td><button class="btn btn-primary" onclick='highlightResidues(<?= json_encode($pair["residues"]) ?>)'>Highlight</button></td>
                       </tr>
                     <?php endforeach; ?>
                     </tr>
@@ -378,6 +660,14 @@ $domains = $stmt->fetchAll();
           max: 1,
           name: 'Score'
         },
+        dataZoom: [
+            {
+                id: 'dataZoomX',
+                type: 'slider',
+                xAxisIndex: [0],
+                filterMode: 'filter'
+            }
+          ],
         series: [{
           data: yValues,
           type: 'line',
@@ -387,6 +677,7 @@ $domains = $stmt->fetchAll();
           symbol: 'circle',
           symbolSize: 6,
           markLine: {
+                  symbol: 'circle',
                   data: [
                       {
                           yAxis: 0.5, // The y-axis value where the horizontal line will be drawn
@@ -395,15 +686,21 @@ $domains = $stmt->fetchAll();
                               type: 'solid' // Line type (solid, dashed, dotted)
                           },
                           label: {
-                              formatter: 'Cut Off' // Label for the line
+                              formatter: 'Cut Off 0.5' ,// Label for the line
+                              position: 'start',
                           },
-                          symbol: 'none' // No symbol at the ends of the line
                       }
                   ]
               }
         }],
         grid: { left: '6%', right: '6%', bottom: '22%', containLabel: true },
-        
+        tooltip: {
+            trigger: 'axis',
+            formatter: function (params) {
+              var res = params[0].dataIndex+params[0].axisValue + '<br/>'+params[0].data;
+              return res;
+            }
+        }
       };
       myChart.setOption(option);
 
@@ -434,6 +731,14 @@ $domains = $stmt->fetchAll();
           max: 1,
           name: 'Score'
         },
+        dataZoom: [
+            {
+                id: 'dataZoomX',
+                type: 'slider',
+                xAxisIndex: [0],
+                filterMode: 'filter'
+            }
+          ],
         series: [{
           data: yValues,
           type: 'line',
@@ -445,7 +750,13 @@ $domains = $stmt->fetchAll();
           
         }],
         grid: { left: '6%', right: '6%', bottom: '22%', containLabel: true },
-        
+        tooltip: {
+            trigger: 'axis',
+            formatter: function (params) {
+              var res = params[0].dataIndex+params[0].axisValue + '<br/>'+params[0].data;
+              return res;
+            }
+        }
       };
       myChart.setOption(option);
 
@@ -551,6 +862,12 @@ $domains = $stmt->fetchAll();
     //   //do something on event
     //   console.log(e)
     // });
+
+    // function to highlight the residues specified 
+    const highlightResidues = (residues) => {
+      viewerInstance.visual.clearHighlight();
+      viewerInstance.visual.highlight({ data: residues, color: '#ffff00' });
+    };
 
 </script>
 

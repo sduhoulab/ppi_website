@@ -18,6 +18,56 @@
 .legend-neg { background:#f5f7fa; border:1px solid #e1e6ee; }
 
 </style>
+<style>
+.nightingale-viewer-container  td {
+    padding: 5px;
+  }
+.nightingale-viewer-container  td:first-child {
+    background-color: white;
+    font: 0.8em sans-serif;
+    white-space: nowrap;
+  }
+.nightingale-viewer-container  td:nth-child(2) {
+    background-color: aliceblue;
+  }
+.nightingale-viewer-container  tr:nth-child(-n + 3) > td {
+    background-color: transparent;
+  }
+</style>
+<script type="importmap">
+  {
+    "imports": {
+      "@nightingale-elements/": "https://cdn.jsdelivr.net/npm/@nightingale-elements/"
+    }
+  }
+</script>
+<script type="module">
+  import "@nightingale-elements/nightingale-sequence@latest";
+  import "@nightingale-elements/nightingale-track@latest";
+  import "@nightingale-elements/nightingale-manager@latest";
+  import "@nightingale-elements/nightingale-navigation@latest";
+  import "@nightingale-elements/nightingale-colored-sequence@latest";
+  import "@nightingale-elements/nightingale-linegraph-track@latest";
+  
+  const accession = "P15516";
+  
+  // Load feature and variation data from Proteins API
+  const featuresData = await (
+    await fetch("https://www.ebi.ac.uk/proteins/api/features/" + accession)
+  ).json();
+  
+  customElements.whenDefined("nightingale-sequence").then(() => {
+    const seq = document.querySelector("#sequence");
+    seq.data = featuresData.sequence;
+  });
+  
+  customElements.whenDefined("nightingale-colored-sequence").then(() => {
+    const coloredSeq = document.querySelector("#colored-sequence");
+    coloredSeq.data = featuresData.sequence;
+  }); 
+  
+  
+</script>
 </head>
 
 <body class="index-page">
@@ -111,9 +161,97 @@
                       <div id="seqChart" style="width:100%;height:200px;"></div>
                       <div id="predictResult"></div>
                       <div id="interfaceResidueDiv" class="mt-3">
+
+                      <!-- nightingale viewer start-->
+                       <div class="nightingale-viewer-container p-1 mt-3 mb-3 border">
+<nightingale-manager>
+  <table>
+    <tbody>
+      <tr>
+        <td></td>
+        <td>
+          <nightingale-navigation
+            id="navigation"
+            min-width="51"
+            height="40"
+            length="51"
+            display-start="1"
+            display-end="51"
+            margin-color="white"
+          ></nightingale-navigation>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <nightingale-sequence
+            id="sequence"
+            min-width="400"
+            height="40"
+            length="51"
+            display-start="1"
+            display-end="51"
+            margin-color="white"
+            highlight-event="onmouseover"
+          ></nightingale-sequence>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <nightingale-colored-sequence
+            id="colored-sequence"
+            min-width="400"
+            height="15"
+            length="51"
+            display-start="1"
+            display-end="51"
+            scale="hydrophobicity-scale"
+            margin-color="white"
+            highlight-event="onmouseover"
+          >
+          </nightingale-colored-sequence>
+        </td>
+      </tr>
+      <tr>
+        <td>Prediction Interface Residues</td>
+        <td>
+          <nightingale-track
+            id="binding"
+            min-width="400"
+            height="15"
+            length="51"
+            display-start="1"
+            display-end="51"
+            margin-color="aliceblue"
+            highlight-event="onmouseover"
+          ></nightingale-track>
+        </td>
+      </tr>
+      <tr>
+        <td>Prediction Results</td>
+        <td>
+          <nightingale-linegraph-track
+            id="prediction-track"
+            min-width="400"
+            length="51"
+            height="50"
+            display-start="1"
+            display-end="51"
+            margin-color="aliceblue"
+          ></nightingale-linegraph-track>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</nightingale-manager>
+ </div>
+<!-- nightingale viewer end-->
+
+
                       <div class="form-group">
                             <h4>Interface Residue</h4>
-                            <textarea class="form-control" id="interfaceResidue" name="interfaceResidue" rows="3" placeholder=""></textarea>
+                            <textarea class="form-control" id="interfaceResidue" name="interfaceResidue" rows="3" placeholder="" readonly></textarea>
                         </div>
                       </div>
                       <div class="text-center quote php-email-form mt-3">
@@ -174,6 +312,23 @@ jQuery(function ($) {
           yValues = response.data.predictResult[0];
 
           updatePredictionResult(uniprotId, seq, yValues);
+
+          customElements.whenDefined("nightingale-sequence").then(() => {
+            const seqEl = document.querySelector("#sequence");
+            seqEl.data = seq;
+            seqEl.length = seq.length;
+            seqEl.displayEnd = seq.length;
+          });
+
+          customElements.whenDefined("nightingale-colored-sequence").then(() => {
+            const coloredSeqEl = document.querySelector("#colored-sequence");
+            coloredSeqEl.data = seq;
+            coloredSeqEl.length = seq.length;
+            coloredSeqEl.displayEnd = seq.length;
+          });
+
+          const site = document.querySelector("#site");
+          site.data = features.filter(({ type }) => type === "SITE");
           
         })
         .fail(function(){
@@ -220,6 +375,7 @@ jQuery(function ($) {
             symbol: 'circle',
             symbolSize: 6,
             markLine: {
+                  symbol: 'circle',
                   data: [
                       {
                           yAxis: 0.5, // The y-axis value where the horizontal line will be drawn
@@ -228,9 +384,9 @@ jQuery(function ($) {
                               type: 'solid' // Line type (solid, dashed, dotted)
                           },
                           label: {
-                              formatter: 'Cut Off' // Label for the line
+                              formatter: 'Cut Off', // Label for the line
+                              position: 'start',
                           },
-                          symbol: 'none' // No symbol at the ends of the line
                       }
                   ]
               }
@@ -320,6 +476,44 @@ jQuery(function ($) {
           }
        });
 
+      customElements.whenDefined("nightingale-track").then(() => {
+        // Nightingale expects start rather than the API's begin
+
+
+        const binding = document.querySelector("#binding");
+        binding.length = yValues.length;
+        binding.displayEnd = yValues.length;
+        binding.data = yValues
+                                .map((value, index) => ({ value, index }))
+                                .filter(item => item.value >= 0.5)
+                                .map(item => ({
+                                  type: "BINDING",
+                                  category: "DOMAINS_AND_SITES",
+                                  begin: String(item.index + 1),
+                                  start:String(item.index + 1),
+                                  end: String(item.index + 1),
+                                  fill:'#ff9b9b',
+                                }));
+                            
+        
+    
+
+      });
+
+      customElements.whenDefined("nightingale-linegraph-track").then(()=>{
+          const predictionTrack = document.querySelector("#prediction-track");
+          predictionTrack.data = [
+            {
+                name: 'Prediction',
+                range: [0, 1],
+                color: 'red',
+                lineCurve:'curveLinear',
+                values: yValues.map((value, index) => ({ position:index+1,
+                  value:value }))
+            },
+          ];
+          console.log(predictionTrack.data);
+      });
 });
 </script>
 
