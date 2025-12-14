@@ -507,9 +507,13 @@ jQuery(function ($) {
                 name: 'Prediction',
                 range: [0, 1],
                 color: 'red',
-                lineCurve:'curveLinear',
-                values: yValues.map((value, index) => ({ position:index+1,
-                  value:value }))
+                lineCurve:'curveStep',
+                values: [
+                  {position:0,value:0},
+                  ...yValues.map((value, index) => ({ position:index+1,
+                  value:value })),
+                  {position:yValues.length+1,value:0}
+                ]
             },
           ];
           console.log(predictionTrack.data);

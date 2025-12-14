@@ -102,6 +102,16 @@ $stmt->bindParam(':uniprotId', $uniprotId);
 $stmt->execute();
 $domains = $stmt->fetchAll();
 
+foreach($domains as $domain){
+  if(strtoupper($domain['database'] )==='PFAM'){
+    $pfam_start = $domain['start_location'];
+    $pfam_end = $domain['end_location'];
+  }else if(strtoupper($domain['database'])==='SMART'){
+    $smart_start = $domain['start_location'];
+    $smart_end = $domain['end_location'];
+  }
+}
+
 ?>
 <head>
 <?php include 'includes/head.php'; ?>
@@ -201,75 +211,90 @@ $domains = $stmt->fetchAll();
 </script>
 
 <style>
-  td {
+ .nightingale-viewer-container td {
     padding: 5px;
   }
-  td:first-child {
-    background-color: lightcyan;
+  .nightingale-viewer-container td:first-child {
+    background-color: white;
     font: 0.8em sans-serif;
     white-space: nowrap;
   }
-  td:nth-child(2) {
+ .nightingale-viewer-container td:nth-child(2) {
     background-color: aliceblue;
   }
-  tr:nth-child(-n + 3) > td {
+ .nightingale-viewer-container tr:nth-child(-n + 3) > td {
     background-color: transparent;
   }
 </style>
 
 <script type="module">
-  import "@nightingale-elements/nightingale-sequence@latest";
-  import "@nightingale-elements/nightingale-track@latest";
-  import "@nightingale-elements/nightingale-manager@latest";
-  import "@nightingale-elements/nightingale-navigation@latest";
-  import "@nightingale-elements/nightingale-colored-sequence@latest";
-  
-  const accession = "<?= $uniprot_id ?>";
-  
-  // Load feature and variation data from Proteins API
-  const featuresData = await (
-    await fetch("https://www.ebi.ac.uk/proteins/api/features/" + accession)
-  ).json();
-  
-  customElements.whenDefined("nightingale-sequence").then(() => {
-    const seq = document.querySelector("#sequence");
-    seq.data = featuresData.sequence;
-  });
-  
-  customElements.whenDefined("nightingale-colored-sequence").then(() => {
-    const coloredSeq = document.querySelector("#colored-sequence");
-    coloredSeq.data = featuresData.sequence;
-  }); 
-  
-  customElements.whenDefined("nightingale-track").then(() => {
+import "@nightingale-elements/nightingale-sequence@latest";
+import "@nightingale-elements/nightingale-track@latest";
+import "@nightingale-elements/nightingale-manager@latest";
+import "@nightingale-elements/nightingale-navigation@latest";
+import "@nightingale-elements/nightingale-colored-sequence@latest";
+
+customElements.whenDefined("nightingale-sequence").then(() => {
+  const seq = document.querySelector("#sequence");
+  seq.data = "<?= $sequence?>";
+});
+
+customElements.whenDefined("nightingale-colored-sequence").then(() => {
+  const coloredSeq = document.querySelector("#colored-sequence");
+  coloredSeq.data = "<?= $sequence?>";
+}); 
+
+customElements.whenDefined("nightingale-track").then(() => {
     // Nightingale expects start rather than the API's begin
-    const features = featuresData.features.map((ft) => ({
-      ...ft,
-      start: ft.start || ft.begin,
-    }));
-  
-    // Filter the data for each feature type and assign to the relevant track data
-    const domain = document.querySelector("#domain");
-    domain.data = features.filter(({ type }) => type === "DOMAIN");
-  
-    const region = document.querySelector("#region");
-    region.data = features.filter(({ type }) => type === "REGION");
-  
-    const site = document.querySelector("#site");
-    site.data = features.filter(({ type }) => type === "SITE");
-  
-    const binding = document.querySelector("#binding");
-    binding.data = features.filter(({ type }) => type === "BINDING");
- 
-    const chain = document.querySelector("#chain");
-    chain.data = features.filter(({ type }) => type === "CHAIN");
- 
-    const disulfide = document.querySelector("#disulfide-bond");
-    disulfide.data = features.filter(({ type }) => type === "DISULFID");
- 
-    const betaStrand = document.querySelector("#beta-strand");
-    betaStrand.data = features.filter(({ type }) => type === "STRAND");
+    const ourbinding = document.querySelector("#our-binding");
+
+    ourbinding.data = "<?= $interface_residues_predicted ?>".split(",").map(item => {
+        const position = parseInt(item.match(/\d+/)[0], 10);
+        return {
+          type: "BINDING",
+          category: "DOMAINS_AND_SITES",
+          start: position,
+          end: position,
+          fill:'#ff9b9b',
+        };
+      });
+
+    const pdbbinding = document.querySelector("#pdb-binding");
+
+  pdbbinding.data = "<?= $interface_residues_PDB ?>".split(",").map(item => {
+      const position = parseInt(item.match(/\d+/)[0], 10);
+      return {
+        type: "BINDING",
+        category: "DOMAINS_AND_SITES",
+        start: position,
+        end: position,
+        fill:'#ff9b9b',
+      };
+    });
+
+    const af2binding = document.querySelector("#af2-binding");
+
+    af2binding.data = "<?= $interface_residues_AF2 ?>".split(",").map(item => {
+      const position = parseInt(item.match(/\d+/)[0], 10);
+      return {
+        type: "BINDING",
+        category: "DOMAINS_AND_SITES",
+        start: position,
+        end: position,
+        fill:'#ff9b9b',
+      };
+    });
+
+    const pfamdomain = document.querySelector("#pfam-domain");
+
+    pfamdomain.data = [{start:"<?= $pfam_start?>",end:"<?= $pfam_end?>"}];
+
+  const smartdomain = document.querySelector("#smart-domain");
+
+    smartdomain.data = [{start:"<?= $smart_start?>",end:"<?= $smart_end?>"}];
+
   });
+
 </script>
 
 </head>
@@ -393,7 +418,7 @@ $domains = $stmt->fetchAll();
             <!-- Prediction score section end -->
 
             <!-- Sequence Predictions START -->
-            <div id="nightingale-div" class="card shadow-sm mb-4 p-3">
+            <div class="nightingale-viewer-container card shadow-sm mb-4 p-3">
 <nightingale-manager>
   <table>
     <tbody>
@@ -444,10 +469,10 @@ $domains = $stmt->fetchAll();
         </td>
       </tr>
       <tr>
-        <td>Domain</td>
+        <td>Our Model</td>
         <td>
           <nightingale-track
-            id="domain"
+            id="our-binding"
             min-width="400"
             height="15"
             length="<?= $sequence_length ?>"
@@ -459,10 +484,10 @@ $domains = $stmt->fetchAll();
         </td>
       </tr>
       <tr>
-        <td>Region</td>
+        <td>PDB</td>
         <td>
           <nightingale-track
-            id="region"
+            id="pdb-binding"
             min-width="400"
             height="15"
             length="<?= $sequence_length ?>"
@@ -474,10 +499,10 @@ $domains = $stmt->fetchAll();
         </td>
       </tr>
       <tr>
-        <td>Site</td>
+        <td>AF2</td>
         <td>
           <nightingale-track
-            id="site"
+            id="af2-binding"
             min-width="400"
             height="15"
             length="<?= $sequence_length ?>"
@@ -489,11 +514,10 @@ $domains = $stmt->fetchAll();
         </td>
       </tr>
       <tr>
-        <td>Chain</td>
+        <td>PFAM Domain</td>
         <td>
           <nightingale-track
-            id="chain"
-            layout="non-overlapping"
+            id="pfam-domain"
             min-width="400"
             height="15"
             length="<?= $sequence_length ?>"
@@ -505,41 +529,10 @@ $domains = $stmt->fetchAll();
         </td>
       </tr>
       <tr>
-        <td>Binding site</td>
+        <td>SMART Domain</td>
         <td>
           <nightingale-track
-            id="binding"
-            min-width="400"
-            height="15"
-            length="<?= $sequence_length ?>"
-            display-start="1"
-            display-end="<?= $sequence_length ?>"
-            margin-color="aliceblue"
-            highlight-event="onmouseover"
-          ></nightingale-track>
-        </td>
-      </tr>
-      <tr>
-        <td>Disulfide bond</td>
-        <td>
-          <nightingale-track
-            id="disulfide-bond"
-            layout="non-overlapping"
-            min-width="400"
-            height="15"
-            length="<?= $sequence_length ?>"
-            display-start="1"
-            display-end="<?= $sequence_length ?>"
-            margin-color="aliceblue"
-            highlight-event="onmouseover"
-          ></nightingale-track>
-        </td>
-      </tr>
-      <tr>
-        <td>Beta strand</td>
-        <td>
-          <nightingale-track
-            id="beta-strand"
+            id="smart-domain"
             min-width="400"
             height="15"
             length="<?= $sequence_length ?>"
