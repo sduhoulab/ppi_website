@@ -233,6 +233,7 @@ import "@nightingale-elements/nightingale-track@latest";
 import "@nightingale-elements/nightingale-manager@latest";
 import "@nightingale-elements/nightingale-navigation@latest";
 import "@nightingale-elements/nightingale-colored-sequence@latest";
+import "@nightingale-elements/nightingale-interpro-track@latest";
 
 customElements.whenDefined("nightingale-sequence").then(() => {
   const seq = document.querySelector("#sequence");
@@ -287,11 +288,11 @@ customElements.whenDefined("nightingale-track").then(() => {
 
     const pfamdomain = document.querySelector("#pfam-domain");
 
-    pfamdomain.data = [{start:"<?= $pfam_start?>",end:"<?= $pfam_end?>"}];
+    pfamdomain.data = [{accession:'X',type:'domain',start:"<?= $pfam_start?>",end:"<?= $pfam_end?>",label:"<?= $pfam_start.':'.$pfam_end?>"}];
 
   const smartdomain = document.querySelector("#smart-domain");
 
-    smartdomain.data = [{start:"<?= $smart_start?>",end:"<?= $smart_end?>"}];
+    smartdomain.data = [{accession:'X',type:'domain',start:"<?= $smart_start?>",end:"<?= $smart_end?>",label:"<?= $smart_start.':'.$smart_end?>"}];
 
   });
 
@@ -379,15 +380,15 @@ customElements.whenDefined("nightingale-track").then(() => {
             
               
             <!-- Prediction score section start -->
-            <div id="prediction_score" class="card protein-card shadow-sm mb-4">
+            <!-- <div id="prediction_score" class="card protein-card shadow-sm mb-4">
               <div id="seqChart" style="width: 100%; height: 400px;" class="card-body"></div>
             </div>
             <div id="entropy_score" class="card protein-card shadow-sm mb-4">
               <div id="entropyScoreChart" style="width: 100%; height: 400px;" class="card-body"></div>
-            </div>
+            </div> -->
             <!-- Prediction score section end -->
 
-            <div id="seq_prediction">
+            <!-- <div id="seq_prediction">
               <div class="card shadow-sm mb-4">
                 <div class="card-body p-3">
                   <h5 class="mb-2">Sequence Predictions</h5>
@@ -414,11 +415,12 @@ customElements.whenDefined("nightingale-track").then(() => {
 
                 </div>
               </div>
-            </div>
+            </div> -->
             <!-- Prediction score section end -->
 
             <!-- Sequence Predictions START -->
             <div class="nightingale-viewer-container card shadow-sm mb-4 p-3">
+              <h4>Prediction Result</h4>
 <nightingale-manager>
   <table>
     <tbody>
@@ -431,7 +433,7 @@ customElements.whenDefined("nightingale-track").then(() => {
             height="40"
             length="<?= $sequence_length ?>"
             display-start="1"
-            display-end="<?= $sequence_length ?>"
+            display-end="50"
             margin-color="white"
           ></nightingale-navigation>
         </td>
@@ -516,7 +518,7 @@ customElements.whenDefined("nightingale-track").then(() => {
       <tr>
         <td>PFAM Domain</td>
         <td>
-          <nightingale-track
+          <nightingale-interpro-track
             id="pfam-domain"
             min-width="400"
             height="15"
@@ -525,13 +527,17 @@ customElements.whenDefined("nightingale-track").then(() => {
             display-end="<?= $sequence_length ?>"
             margin-color="aliceblue"
             highlight-event="onmouseover"
-          ></nightingale-track>
+            show-label="true"
+            label=".feature.label"
+            expanded
+            shape="roundRectangle"
+          ></nightingale-interpro-track>
         </td>
       </tr>
       <tr>
         <td>SMART Domain</td>
         <td>
-          <nightingale-track
+          <nightingale-interpro-track
             id="smart-domain"
             min-width="400"
             height="15"
@@ -540,7 +546,11 @@ customElements.whenDefined("nightingale-track").then(() => {
             display-end="<?= $sequence_length ?>"
             margin-color="aliceblue"
             highlight-event="onmouseover"
-          ></nightingale-track>
+            show-label="true"
+            label=".feature.label"
+            expanded
+            shape="roundRectangle"
+          ></nightingale-interpro-track>
         </td>
       </tr>
     </tbody>

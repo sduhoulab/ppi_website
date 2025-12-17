@@ -31,6 +31,7 @@
             <li><a href="predictor.php">Predictor</a></li>
             <li><a href="protome.php">Protome</a></li>
             <li><a href="mutation.php">Mutation</a></li>
+            <li><a href="download.php">Download</a></li>
             <li><a href="help.php">Help</a></li>
             <!-- <li><a href="services.html">Services</a></li>
             <li><a href="projects.html">Projects</a></li>

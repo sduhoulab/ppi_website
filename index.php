@@ -17,9 +17,9 @@
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
         <div class="row align-items-center">
-          <div class="col-lg-6">
+          <div class="col-lg-7">
             <div class="hero-content" data-aos="fade-right" data-aos-delay="200">
-              <span class="subtitle">Where proteins connect, life takes shape.</span>
+              <span class="subtitle">The First Proteome-Wide Atlas of Protein-Protein Interaction Interfaces and Pathogenic Mutations.</span>
               <h1>Protein-Protein Interaction</h1>
               <p>Protein–protein interactions (PPIs) are the physical contacts formed between two or more protein molecules, allowing them to work together to carry out essential biological functions. These interactions regulate nearly every cellular process—such as signaling, metabolism, immune response, and gene expression. Understanding PPIs helps researchers uncover how cells function, how diseases develop, and how new therapeutic strategies can be designed.</p>
 
@@ -30,31 +30,38 @@
 
               <div class="trust-badges">
                 <div class="badge-item">
-                  <i class="bi bi-building-check"></i>
+                  <i class="bi bi-droplet"></i>
                   <div class="badge-text">
-                    <span class="count">2+</span>
-                    <span class="label">ProtBert Models</span>
+                    <span class="count">20,656</span>
+                    <span class="label">Proteins</span>
                   </div>
                 </div>
                 <div class="badge-item">
-                  <i class="bi bi-trophy"></i>
+                  <i class="bi bi-flask"></i>
                   <div class="badge-text">
-                    <span class="count">5+ million</span>
-                    <span class="label">Protome Samples</span>
+                    <span class="count">9,854,603</span>
+                    <span class="label">Residues</span>
                   </div>
                 </div>
                 <div class="badge-item">
-                  <i class="bi bi-people"></i>
+                  <i class="bi bi-link-45deg"></i>
                   <div class="badge-text">
-                    <span class="count">3+ million+</span>
-                    <span class="label">Mutation Samples</span>
+                    <span class="count">1,168,160</span>
+                    <span class="label">Predicted Interface Sites</span>
+                  </div>
+                </div>
+                <div class="badge-item">
+                  <i class="bi bi-tags"></i>
+                  <div class="badge-text">
+                    <span class="count">XXX, XXX</span>
+                    <span class="label">Annotated Pathogenic Variants</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
+          <div class="col-lg-5" data-aos="fade-left" data-aos-delay="300">
             <div class="hero-image">
               <img src="assets/img/Brief-introduction-of-Protein-Protein-Interaction-0.png" alt="Brief-introduction-of-Protein-Protein-Interaction-0" class="img-fluid">
               <div class="image-badge">
