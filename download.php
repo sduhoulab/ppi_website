@@ -47,7 +47,7 @@
                     </span>
                     <span class="spec-item">
                       <i class="bi bi-calendar-check"></i>
-                      Released Date: Dec, 2025
+                      Release Date: Dec, 2025
                     </span>
                   </div>
                 </div>
@@ -82,11 +82,11 @@
                   <div class="project-specs">
                     <span class="spec-item">
                       <i class="bi bi-tags"></i>
-                      XX,XXX Units
+                      XX,XXX Records
                     </span>
                     <span class="spec-item">
                       <i class="bi bi-calendar-check"></i>
-                      Released Date: Dec, 2025
+                      Release Date: Dec, 2025
                     </span>
                   </div>
                 </div>

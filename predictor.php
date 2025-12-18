@@ -19,6 +19,12 @@
 
 </style>
 <style>
+
+.nightingale-viewer-container{
+  border-radius: 4px;
+  border: 1px solid #e1e6ee;
+}
+
 .nightingale-viewer-container  td {
     padding: 5px;
   }
@@ -28,7 +34,9 @@
     white-space: nowrap;
   }
 .nightingale-viewer-container  td:nth-child(2) {
-    background-color: aliceblue;
+    background-color: #f5f7fa;
+    border-top: white solid;
+    border-color: white;
   }
 .nightingale-viewer-container  tr:nth-child(-n + 3) > td {
     background-color: transparent;
@@ -158,12 +166,22 @@
                           <h4>Prediction Result</h4>
                           <p>Your prediction results are shown below. </p>
                         </div>
-                      <div id="seqChart" style="width:100%;height:200px;"></div>
-                      <div id="predictResult"></div>
+                      <div id="seqChart" style="width:100%;height:200px;border:1px solid #e1e6ee;border-radius:4px"></div>
+                      <div id="predictResult" style="display:none"></div>
                       <div id="interfaceResidueDiv" class="mt-3">
 
+<!--
+背景        #FFFFFF
+序列文字    #2B2B2B
+序列背景    #F5F5F5
+热图渐变    Viridis 或 Blue–White–Red
+功能区段    #E15759（alpha 0.75）
+曲线        #4E79A7
+刻度/网格   #D0D0D0
+-->
+
                       <!-- nightingale viewer start-->
-                       <div class="nightingale-viewer-container p-1 mt-3 mb-3 border">
+                       <div class="nightingale-viewer-container p-1 mt-3 mb-3 rounded">
 <nightingale-manager>
   <table>
     <tbody>
@@ -238,7 +256,7 @@
             height="50"
             display-start="1"
             display-end="51"
-            margin-color="aliceblue"
+            margin-color="#F5F5F5"
           ></nightingale-linegraph-track>
         </td>
       </tr>
@@ -492,7 +510,7 @@ jQuery(function ($) {
                                   begin: String(item.index + 1),
                                   start:String(item.index + 1),
                                   end: String(item.index + 1),
-                                  fill:'#ff9b9b',
+                                  fill:'#E15759',
                                 }));
                             
         
@@ -506,17 +524,16 @@ jQuery(function ($) {
             {
                 name: 'Prediction',
                 range: [0, 1],
-                color: 'red',
+                color: '#4E79A7',
                 lineCurve:'curveStep',
                 values: [
-                  {position:0,value:0},
+                  // {position:0,value:0},
                   ...yValues.map((value, index) => ({ position:index+1,
                   value:value })),
-                  {position:yValues.length+1,value:0}
+                  // {position:yValues.length+1,value:0}
                 ]
             },
           ];
-          console.log(predictionTrack.data);
       });
 });
 </script>
