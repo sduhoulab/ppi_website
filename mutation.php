@@ -36,7 +36,7 @@
         <!-- Header -->
         <div class="privacy-header" data-aos="fade-up">
           <div class="header-content">
-            <div class="last-updated">Released Date: February 27, 2025</div>
+            <div class="last-updated">Release Date: February 27, 2025</div>
             <h1>Mutation Dataset</h1>
             <p class="intro-text">
               We have annotated genetic variants from ClinVar, UK Biobank, and gnomAD using ProteinIS to determine whether amino acid changes occur at protein-protein interaction (PPI) sites. Explore these annotations through our interactive query interface or download complete datasets from the Download section.

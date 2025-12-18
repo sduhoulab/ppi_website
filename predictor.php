@@ -90,7 +90,7 @@
         <!-- Header -->
         <div class="privacy-header" data-aos="fade-up">
           <div class="header-content">
-            <div class="last-updated">Released Date: Novermber 01, 2025</div>
+            <div class="last-updated">Release Date: Novermber 01, 2025</div>
             <h1>Article title</h1>
             <p class="intro-text">
               Powered by protein language models, ProteinIS predicts interaction sites for individual proteins using only sequence information—no partner protein data required. Our platform also offers extensive mutation annotations and human proteome-wide predictions. In this website, you can submit your protein sequences for analysis or explore our comprehensive data resources.    
