@@ -37,7 +37,7 @@
 
         <div class="col-lg-4 col-md-12 footer-contact text-center text-md-start">
           <h4>Contact Us</h4>
-          <p>The Center for Integrative Bioinformatics</p>
+          <p>The Center for Bioinformatics (CBI)</p>
           <p>National Institute of Health Data Science of China</p>
           <p>Shandong University, Shandong, P. R. China.</p>
           <p></p>

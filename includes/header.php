@@ -4,7 +4,7 @@
       <div class="container d-flex justify-content-center justify-content-md-between">
         <div class="contact-info d-flex align-items-center">
           <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:houqingzhen@sdu.edu.cn">houqingzhen@sdu.edu.cn</a></i>
-          <i class="bi bi-building d-flex align-items-center ms-4"><span>The Center for Integrative Bioinformatics, National Institute of Health Data Science of China</span></i>
+          <i class="bi bi-building d-flex align-items-center ms-4"><span>The Center for Bioinformatics (CBI), National Institute of Health Data Science of China</span></i>
         </div>
         <div class="social-links d-none d-md-flex align-items-center">
           <!-- <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
