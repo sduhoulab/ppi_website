@@ -66,3 +66,22 @@
 
   <!-- Preloader -->
   <div id="preloader"></div>
+
+  <script src="https://lf-cdn.coze.cn/obj/unpkg/flow-platform/chat-app-sdk/1.2.0-beta.19/libs/cn/index.js"></script>
+<script>
+  new CozeWebSDK.WebChatClient({
+    config: {
+      bot_id: '7602086574654455860',
+    },
+    componentProps: {
+      title: 'Coze',
+    },
+    auth: {
+      type: 'token',
+      token: 'pat_GwZPWwSb8V87sx5wQ175M1mcQmRaxKao9LBfUGjpsXBKpcqUsJEVjMFNFaAZyF8s
+      onRefreshToken: function () {
+        return 'pat_GwZPWwSb8V87sx5wQ175M1mcQmRaxKao9LBfUGjpsXBKpcqUsJEVjMFNFaAZyF8s'
+      }
+    }
+  });
+</script>

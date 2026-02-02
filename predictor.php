@@ -120,15 +120,19 @@
                         <form action="server_side/scripts/predictor_api.php" method="post" class="php-email-form" data-aos="fade-left" data-aos-delay="200">
                       
                           <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-9">
                               <div class="form-group">
                                 <label for="predictor">Select Predictor</label>
                                 <select id="predictor" name="predictor" class="form-control" required="">
-                                  <option value="ESM">ESM</option>
+                                  <option value="jingmingcn/PPI_esm2_t33_650M_UR50D">PPI_esm2_t33_650M_UR50D</option>
+                                  <option value="Rostlab/prot_bert">prot_bert</option>
+                                  <option value="Rostlab/prot_bert_bfd_ss3">prot_bert_bfd_ss3</option>
+                                  <option value="Rostlab/prot_bert_bfd_membrane">prot_bert_bfd_membrane</option>
+                                  <option value="Rostlab/prot_bert_bfd">prot_bert_bfd</option>
                                 </select>
                               </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                               <div class="form-group">
                                 <label for="cutoff">Cut Off</label>
                                 <input type="text"  name="cutoff" class="form-control" id="cutoff" placeholder="Cut Off. Default 0.5." value="0.5" required="">
