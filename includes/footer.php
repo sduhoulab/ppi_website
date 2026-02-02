@@ -72,15 +72,31 @@
   new CozeWebSDK.WebChatClient({
     config: {
       bot_id: '7602086574654455860',
+      isFrame: true,
     },
     componentProps: {
-      title: 'Coze',
+      title: 'PPI AI Agent Chat',
     },
     auth: {
       type: 'token',
-      token: 'pat_GwZPWwSb8V87sx5wQ175M1mcQmRaxKao9LBfUGjpsXBKpcqUsJEVjMFNFaAZyF8s
+      token: 'pat_GwZPWwSb8V87sx5wQ175M1mcQmRaxKao9LBfUGjpsXBKpcqUsJEVjMFNFaAZyF8s',
       onRefreshToken: function () {
         return 'pat_GwZPWwSb8V87sx5wQ175M1mcQmRaxKao9LBfUGjpsXBKpcqUsJEVjMFNFaAZyF8s'
+      }
+    },
+    userInfo: {
+      id: token_id,
+      url: 'https://lf-coze-web-cdn.coze.cn/obj/coze-web-cn/obric/coze/favicon.1970.png',
+      nickname: 'Visitor',
+    },
+    ui: {
+      footer: {
+        isShow: false,
+        expressionText: 'Powered by ...',
+      },
+      chatBot:{
+        isNeedAudio: false,
+        uploadable: false,
       }
     }
   });
