@@ -29,7 +29,7 @@
           <ul>
             <li><a href="index.php">Home</a></li>
             <li><a href="predictor.php">Predictor</a></li>
-            <li><a href="protome.php">Protome</a></li>
+            <li><a href="proteome.php">Proteome</a></li>
             <li><a href="mutation.php">Mutation</a></li>
             <li><a href="download.php">Download</a></li>
             <li><a href="help.php">Help</a></li>
