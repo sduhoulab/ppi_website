@@ -1,0 +1,100 @@
+uniprot_id	sequence_md5	sequence_length	database	database_accession	database_description	start_location	end_location	e_value	status	date_annotated	interpro_accession	interpro_description	go_molecular_function	go_biological_process
+A0A5B9	fe14bd3e52522d7b2781b1b5274397da	178	Pfam	PF07654	Immunoglobulin C1-set domain	10	101	4.3E-17	T	19-09-2025	IPR003597	Immunoglobulin C1-set	-	-
+A0A5B9	fe14bd3e52522d7b2781b1b5274397da	178	SMART	SM00407	igc1_4	25	105	1.7E-23	T	19-09-2025	IPR003597	Immunoglobulin C1-set	-	-
+A0A0J9YWL9	e40bab3dd5e7d25b7a120a28944c729c	993	Pfam	PF20868	Testis-expressed protein 13, MVPLGDSxSHS repeat	450	551	5.2E-39	T	19-09-2025	IPR049367	Testis-expressed protein 13C/D, MVPLGDSxSHS repeat	-	-
+A0A0J9YWL9	e40bab3dd5e7d25b7a120a28944c729c	993	Pfam	PF20868	Testis-expressed protein 13, MVPLGDSxSHS repeat	366	467	4.3E-45	T	19-09-2025	IPR049367	Testis-expressed protein 13C/D, MVPLGDSxSHS repeat	-	-
+A0A0J9YWL9	e40bab3dd5e7d25b7a120a28944c729c	993	Pfam	PF20868	Testis-expressed protein 13, MVPLGDSxSHS repeat	750	840	3.3E-31	T	19-09-2025	IPR049367	Testis-expressed protein 13C/D, MVPLGDSxSHS repeat	-	-
+A0A0J9YWL9	e40bab3dd5e7d25b7a120a28944c729c	993	Pfam	PF20868	Testis-expressed protein 13, MVPLGDSxSHS repeat	597	696	9.1E-36	T	19-09-2025	IPR049367	Testis-expressed protein 13C/D, MVPLGDSxSHS repeat	-	-
+A0A0J9YWL9	e40bab3dd5e7d25b7a120a28944c729c	993	Pfam	PF20868	Testis-expressed protein 13, MVPLGDSxSHS repeat	527	614	1.3E-35	T	19-09-2025	IPR049367	Testis-expressed protein 13C/D, MVPLGDSxSHS repeat	-	-
+A0A0J9YWL9	e40bab3dd5e7d25b7a120a28944c729c	993	Pfam	PF20868	Testis-expressed protein 13, MVPLGDSxSHS repeat	660	757	3.6E-35	T	19-09-2025	IPR049367	Testis-expressed protein 13C/D, MVPLGDSxSHS repeat	-	-
+A0A0J9YWL9	e40bab3dd5e7d25b7a120a28944c729c	993	Pfam	PF20868	Testis-expressed protein 13, MVPLGDSxSHS repeat	869	933	3.0E-10	T	19-09-2025	IPR049367	Testis-expressed protein 13C/D, MVPLGDSxSHS repeat	-	-
+A0A0J9YWL9	e40bab3dd5e7d25b7a120a28944c729c	993	Pfam	PF20868	Testis-expressed protein 13, MVPLGDSxSHS repeat	785	883	9.9E-37	T	19-09-2025	IPR049367	Testis-expressed protein 13C/D, MVPLGDSxSHS repeat	-	-
+A0A0J9YWL9	e40bab3dd5e7d25b7a120a28944c729c	993	Pfam	PF20868	Testis-expressed protein 13, MVPLGDSxSHS repeat	286	383	4.3E-26	T	19-09-2025	IPR049367	Testis-expressed protein 13C/D, MVPLGDSxSHS repeat	-	-
+A0A0J9YWL9	e40bab3dd5e7d25b7a120a28944c729c	993	Pfam	PF20868	Testis-expressed protein 13, MVPLGDSxSHS repeat	700	799	1.5E-36	T	19-09-2025	IPR049367	Testis-expressed protein 13C/D, MVPLGDSxSHS repeat	-	-
+A0A0J9YWL9	e40bab3dd5e7d25b7a120a28944c729c	993	Pfam	PF20868	Testis-expressed protein 13, MVPLGDSxSHS repeat	824	924	3.1E-33	T	19-09-2025	IPR049367	Testis-expressed protein 13C/D, MVPLGDSxSHS repeat	-	-
+A0A0J9YWL9	e40bab3dd5e7d25b7a120a28944c729c	993	Pfam	PF20864	Putative testis-expressed protein 13C, zinc finger domain	959	978	4.3E-9	T	19-09-2025	IPR049534	Testis-expressed protein 13A/C/D, zinc finger domain	-	-
+A0A0J9YWL9	e40bab3dd5e7d25b7a120a28944c729c	993	Pfam	PF15186	Testis-expressed sequence 13 protein family	5	149	2.8E-56	T	19-09-2025	IPR028193	Testis-expressed protein 13 A-D, N-terminal	-	-
+A0A0G2JS06	4e824cc611694ec4de0d00ebc0eb62cf	123	SMART	SM00406	igv1_8	36	117	1.9E-18	T	19-09-2025	IPR013106	Immunoglobulin V-set domain	-	-
+A0A0G2JS06	4e824cc611694ec4de0d00ebc0eb62cf	123	Pfam	PF07686	Immunoglobulin V-set domain	24	121	4.3E-15	T	19-09-2025	IPR013106	Immunoglobulin V-set domain	-	-
+A0A0G2JS06	4e824cc611694ec4de0d00ebc0eb62cf	123	SMART	SM00409	IG_3c	26	122	4.3E-5	T	19-09-2025	IPR003599	Immunoglobulin domain subtype	-	-
+Q5VTY9	6403df70de43490f40166bd2b03bbb27	493	Pfam	PF03062	MBOAT, membrane-bound O-acyltransferase family	125	441	4.2E-73	T	19-09-2025	IPR004299	Membrane bound O-acyl transferase, MBOAT	-	-
+Q6NV74	94db0376e923b4e19c0f172dcf9457b9	962	Pfam	PF15262	Domain of unknown function (DUF4592)	130	240	2.2E-25	T	19-09-2025	IPR028030	Domain of unknown function DUF4592	-	-
+Q5T0L3	bd828ee1fcdab4398c09c3abd3928581	261	Pfam	PF17734	Spermatogenesis-associated protein 46	1	225	0.0	T	19-09-2025	IPR040879	Spermatogenesis-associated protein 46-like	-	-
+Q9UK58	c0f90fc916e8de330a1058f71322b5c8	526	SMART	SM01332	Cyclin_C_2	199	314	1.0E-6	T	19-09-2025	IPR004367	Cyclin, C-terminal domain	-	-
+Q9UK58	c0f90fc916e8de330a1058f71322b5c8	526	Pfam	PF02984	Cyclin, C-terminal domain	215	293	0.092	T	19-09-2025	IPR004367	Cyclin, C-terminal domain	-	-
+Q9UK58	c0f90fc916e8de330a1058f71322b5c8	526	Pfam	PF00134	Cyclin, N-terminal domain	83	196	5.1E-6	T	19-09-2025	IPR006671	Cyclin, N-terminal	-	-
+Q9UK58	c0f90fc916e8de330a1058f71322b5c8	526	SMART	SM00385	cyclin_7	203	287	1.5E-12	T	19-09-2025	IPR013763	Cyclin-like domain	-	-
+Q9UK58	c0f90fc916e8de330a1058f71322b5c8	526	SMART	SM00385	cyclin_7	88	190	5.9E-11	T	19-09-2025	IPR013763	Cyclin-like domain	-	-
+Q9UL42	195f93b437a493cbe71c3347b548e7cc	364	Pfam	PF20846	PNMA N-terminal RRM-like domain	1	92	1.3E-35	T	19-09-2025	IPR048271	Paraneoplastic antigen Ma-like, N-terminal domain	-	-
+Q9UL42	195f93b437a493cbe71c3347b548e7cc	364	Pfam	PF14893	PNMA	168	328	3.4E-67	T	19-09-2025	IPR048270	Paraneoplastic antigen Ma-like, C-terminal domain	-	-
+Q9Y6H8	2222ccb68ea0d885b7153dffd7a83f79	435	SMART	SM01089	Connexin_CCC_2	159	225	1.9E-46	T	19-09-2025	IPR019570	Connexin, cysteine-rich domain	-	-
+Q9Y6H8	2222ccb68ea0d885b7153dffd7a83f79	435	Pfam	PF00029	Connexin	3	227	5.2E-100	T	19-09-2025	IPR013092	Connexin, N-terminal	-	-
+Q9Y6H8	2222ccb68ea0d885b7153dffd7a83f79	435	SMART	SM00037	CNX_2	43	76	1.4E-20	T	19-09-2025	IPR013092	Connexin, N-terminal	-	-
+Q9Y210	bc5a08273bd7729e7dc71d1153b112ec	931	Pfam	PF12796	Ankyrin repeats (3 copies)	104	183	1.4E-5	T	19-09-2025	IPR002110	Ankyrin repeat	GO:0005515(InterPro)	-
+Q9Y210	bc5a08273bd7729e7dc71d1153b112ec	931	SMART	SM00248	ANK_2a	132	160	5.9	T	19-09-2025	IPR002110	Ankyrin repeat	GO:0005515(InterPro)	-
+Q9Y210	bc5a08273bd7729e7dc71d1153b112ec	931	SMART	SM00248	ANK_2a	97	126	820.0	T	19-09-2025	IPR002110	Ankyrin repeat	GO:0005515(InterPro)	-
+Q9Y210	bc5a08273bd7729e7dc71d1153b112ec	931	SMART	SM00248	ANK_2a	218	247	1.2	T	19-09-2025	IPR002110	Ankyrin repeat	GO:0005515(InterPro)	-
+Q9Y210	bc5a08273bd7729e7dc71d1153b112ec	931	Pfam	PF08344	Transient receptor ion channel II	253	315	6.2E-24	T	19-09-2025	IPR013555	Transient receptor ion channel domain	-	-
+Q9Y210	bc5a08273bd7729e7dc71d1153b112ec	931	Pfam	PF00520	Ion transport protein	486	738	2.8E-18	T	19-09-2025	IPR005821	Ion transport domain	GO:0005216(InterPro)|GO:0006811(InterPro)|GO:0016020(InterPro)|GO:0055085(InterPro)	-
+Q9Y210	bc5a08273bd7729e7dc71d1153b112ec	931	SMART	SM01420	TRP_2_2	253	315	2.4E-33	T	19-09-2025	IPR013555	Transient receptor ion channel domain	-	-
+Q9Y6E2	260675fdd7384e92a5b7172bd1d380bf	419	SMART	SM00515	542_3	326	411	2.8E-33	T	19-09-2025	IPR003307	W2 domain	GO:0005515(InterPro)	-
+Q9Y6E2	260675fdd7384e92a5b7172bd1d380bf	419	Pfam	PF25504	5MP1/2 HEAT domain	14	254	1.3E-90	T	19-09-2025	IPR057397	5MP1/2-like, HEAT domain	-	-
+Q9Y6E2	260675fdd7384e92a5b7172bd1d380bf	419	Pfam	PF02020	eIF4-gamma/eIF5/eIF2-epsilon	339	415	6.6E-20	T	19-09-2025	IPR003307	W2 domain	GO:0005515(InterPro)	-
+Q9Y371	a1fa36a71cf05b3edb24be7a0efa5123	365	Pfam	PF03114	BAR domain	19	253	5.2E-71	T	19-09-2025	IPR004148	BAR domain	GO:0005515(InterPro)|GO:0005737(InterPro)	-
+Q9Y371	a1fa36a71cf05b3edb24be7a0efa5123	365	SMART	SM00721	5bar	10	254	1.0E-88	T	19-09-2025	IPR004148	BAR domain	GO:0005515(InterPro)|GO:0005737(InterPro)	-
+Q9Y371	a1fa36a71cf05b3edb24be7a0efa5123	365	Pfam	PF14604	Variant SH3 domain	312	362	1.3E-7	T	19-09-2025	IPR001452	SH3 domain	GO:0005515(InterPro)	-
+Q9Y371	a1fa36a71cf05b3edb24be7a0efa5123	365	SMART	SM00326	SH3_2	308	365	2.6E-14	T	19-09-2025	IPR001452	SH3 domain	GO:0005515(InterPro)	-
+Q9Y4R8	386fd9cb500326ea9f8781845c5842bc	837	Pfam	PF10193	Telomere length regulation protein	512	620	1.9E-29	T	19-09-2025	IPR019337	Telomere length regulation protein, conserved domain	-	-
+Q9Y4R8	386fd9cb500326ea9f8781845c5842bc	837	Pfam	PF25320	TELO2 ARM repeat domain	324	422	1.6E-11	T	19-09-2025	IPR057348	TELO2, ARM repeat domain	-	-
+Q9Y6V0	9c3258dae79d5c74f1c6750b2107ade0	5142	Pfam	PF00168	C2 domain	4707	4825	2.0E-22	T	19-09-2025	IPR000008	C2 domain	-	-
+Q9Y6V0	9c3258dae79d5c74f1c6750b2107ade0	5142	Pfam	PF00168	C2 domain	5025	5134	3.6E-10	T	19-09-2025	IPR000008	C2 domain	-	-
+Q9Y6V0	9c3258dae79d5c74f1c6750b2107ade0	5142	SMART	SM00239	C2_3c	5025	5131	1.3E-14	T	19-09-2025	IPR000008	C2 domain	-	-
+Q9Y6V0	9c3258dae79d5c74f1c6750b2107ade0	5142	SMART	SM00239	C2_3c	4708	4822	8.0E-22	T	19-09-2025	IPR000008	C2 domain	-	-
+Q9Y6V0	9c3258dae79d5c74f1c6750b2107ade0	5142	SMART	SM00228	pdz_new	4511	4590	1.5E-14	T	19-09-2025	IPR001478	PDZ domain	GO:0005515(InterPro)	-
+Q9Y6V0	9c3258dae79d5c74f1c6750b2107ade0	5142	Pfam	PF05715	Piccolo Zn-finger	588	646	9.9E-26	T	19-09-2025	IPR008899	Zinc finger, piccolo-type	GO:0045202(InterPro)|GO:0046872(InterPro)	-
+Q9Y6V0	9c3258dae79d5c74f1c6750b2107ade0	5142	Pfam	PF05715	Piccolo Zn-finger	1058	1115	8.0E-28	T	19-09-2025	IPR008899	Zinc finger, piccolo-type	GO:0045202(InterPro)|GO:0046872(InterPro)	-
+Q9Y6V0	9c3258dae79d5c74f1c6750b2107ade0	5142	Pfam	PF00595	PDZ domain	4508	4583	5.1E-4	T	19-09-2025	IPR001478	PDZ domain	GO:0005515(InterPro)	-
+Q9Y6M9	4ac248f9e0a52225e8abecc2b35a713e	179	Pfam	PF05347	Complex 1 protein (LYR family)	14	72	6.4E-10	T	19-09-2025	IPR008011	Complex 1 LYR protein domain	-	-
+A0A1B0GXF2	82ba8e5abc1f3334bbc9bd78c3ae38a5	115	SMART	SM00406	igv1_8	37	113	1.2E-7	T	19-09-2025	IPR013106	Immunoglobulin V-set domain	-	-
+A0A1B0GXF2	82ba8e5abc1f3334bbc9bd78c3ae38a5	115	Pfam	PF07686	Immunoglobulin V-set domain	25	112	2.3E-11	T	19-09-2025	IPR013106	Immunoglobulin V-set domain	-	-
+A0A5F9ZH88	566cd27b6cc9249fa9bf85b9f3356f1c	199	Pfam	PF00047	Immunoglobulin domain	13	89	2.8E-9	T	19-09-2025	IPR013151	Immunoglobulin-like beta-sandwich domain	-	-
+A0A5F9ZH88	566cd27b6cc9249fa9bf85b9f3356f1c	199	Pfam	PF00047	Immunoglobulin domain	113	187	1.6E-8	T	19-09-2025	IPR013151	Immunoglobulin-like beta-sandwich domain	-	-
+A0A5F9ZH88	566cd27b6cc9249fa9bf85b9f3356f1c	199	SMART	SM00409	IG_3c	11	91	9.1	T	19-09-2025	IPR003599	Immunoglobulin domain subtype	-	-
+A0A5F9ZH88	566cd27b6cc9249fa9bf85b9f3356f1c	199	SMART	SM00409	IG_3c	111	198	0.0014	T	19-09-2025	IPR003599	Immunoglobulin domain subtype	-	-
+A0A494BZU4	9b5f41c3605a09f3fcbb580b242b18f7	170	Pfam	PF15049	Protein of unknown function (DUF4534)	4	164	1.7E-55	T	19-09-2025	IPR027862	Protein of unknown function DUF4534	-	-
+A8MUI8	7e5e4147989be9d40f36c2c1ecad41cb	341	Pfam	PF15229	POM121 family	79	283	2.0E-14	T	19-09-2025	-	-	-	-
+A8MV65	9719b17e67b2907f699c7457ae37c759	326	Pfam	PF07545	Vestigial/Tondu family	82	111	8.1E-16	T	19-09-2025	IPR011520	Vestigial family	GO:0005634(InterPro)|GO:0006355(InterPro)	-
+A8MV65	9719b17e67b2907f699c7457ae37c759	326	SMART	SM00711	tdu	99	114	0.001	T	19-09-2025	IPR006627	TDU repeat	-	-
+C9JVW0	94b673f048df9baf6ab53d067deeb906	142	Pfam	PF15018	TRP-interacting helix	26	58	2.1E-8	T	19-09-2025	IPR029162	TRP-interacting helix, InaF motif	-	-
+B2RN74	6e5bd7199c8939066fe67183fd6117b2	326	Pfam	PF13853	Olfactory receptor	46	320	7.4E-47	T	19-09-2025	IPR000725	Olfactory receptor	GO:0004984(InterPro)|GO:0007186(InterPro)|GO:0016020(InterPro)	-
+C9JJ37	f043754bb090f136ccab5b8b252a48a1	291	Pfam	PF00651	BTB/POZ domain	22	126	7.2E-13	T	19-09-2025	IPR000210	BTB/POZ domain	GO:0005515(InterPro)	-
+C9JJ37	f043754bb090f136ccab5b8b252a48a1	291	Pfam	PF07707	BTB And C-terminal Kelch	134	235	2.0E-8	T	19-09-2025	IPR011705	BTB/Kelch-associated	-	-
+C9JJ37	f043754bb090f136ccab5b8b252a48a1	291	SMART	SM00875	BACK_2	133	237	7.1E-9	T	19-09-2025	IPR011705	BTB/Kelch-associated	-	-
+C9JJ37	f043754bb090f136ccab5b8b252a48a1	291	SMART	SM00225	BTB_4	29	128	7.1E-17	T	19-09-2025	IPR000210	BTB/POZ domain	GO:0005515(InterPro)	-
+C9JQL5	1325641f4cbb5cdd8393cf508bf65bc9	133	Pfam	PF04505	Interferon-induced transmembrane protein	55	120	5.2E-24	T	19-09-2025	IPR007593	CD225/Dispanin family	GO:0016020(InterPro)	-
+O14593	4601212cec9986ccea8e9e9352eb7acf	260	SMART	SM00248	ANK_2a	189	218	0.0013	T	19-09-2025	IPR002110	Ankyrin repeat	GO:0005515(InterPro)	-
+O14593	4601212cec9986ccea8e9e9352eb7acf	260	SMART	SM00248	ANK_2a	123	152	0.035	T	19-09-2025	IPR002110	Ankyrin repeat	GO:0005515(InterPro)	-
+O14593	4601212cec9986ccea8e9e9352eb7acf	260	SMART	SM00248	ANK_2a	222	251	2900.0	T	19-09-2025	IPR002110	Ankyrin repeat	GO:0005515(InterPro)	-
+O14593	4601212cec9986ccea8e9e9352eb7acf	260	SMART	SM00248	ANK_2a	156	185	1.0	T	19-09-2025	IPR002110	Ankyrin repeat	GO:0005515(InterPro)	-
+O14593	4601212cec9986ccea8e9e9352eb7acf	260	Pfam	PF12796	Ankyrin repeats (3 copies)	147	218	8.1E-9	T	19-09-2025	IPR002110	Ankyrin repeat	GO:0005515(InterPro)	-
+O60725	ee4b84f3ee3d1bdcddfa65c296ad67e0	284	Pfam	PF04140	Isoprenylcysteine carboxyl methyltransferase (ICMT) family	164	257	5.8E-32	T	19-09-2025	IPR007269	Isoprenylcysteine carboxyl methyltransferase	GO:0004671(InterPro)|GO:0006481(InterPro)|GO:0016020(InterPro)	-
+O75140	e43148f70af40ed86230866539c244a2	1603	Pfam	PF00610	Domain found in Dishevelled, Egl-10, and Pleckstrin (DEP)	1199	1259	1.3E-8	T	19-09-2025	IPR000591	DEP domain	GO:0035556(InterPro)	-
+O75140	e43148f70af40ed86230866539c244a2	1603	Pfam	PF23013	IML1 N-terminal double psi beta barrel domain	5	89	1.0E-29	T	19-09-2025	IPR055213	IML1, N-terminal double psi beta-barrel domain	-	-
+O75140	e43148f70af40ed86230866539c244a2	1603	Pfam	PF12257	Vacuolar membrane-associated protein Iml1, N-terminal domain	100	381	7.2E-109	T	19-09-2025	IPR048255	Vacuolar membrane-associated protein Iml1, N-terminal domain	-	-
+O75140	e43148f70af40ed86230866539c244a2	1603	SMART	SM00049	DEP_3	1187	1262	8.2E-19	T	19-09-2025	IPR000591	DEP domain	GO:0035556(InterPro)	-
+O75140	e43148f70af40ed86230866539c244a2	1603	Pfam	PF19418	DEPDC5 protein C-terminal region	1278	1585	0.0	T	19-09-2025	IPR045838	DEPDC5, C-terminal	-	-
+O95801	dffeed0cc947c0cfa80261a3ec8af030	387	SMART	SM00028	tpr_5	117	150	2.0	T	19-09-2025	IPR019734	Tetratricopeptide repeat	GO:0005515(InterPro)	-
+O95801	dffeed0cc947c0cfa80261a3ec8af030	387	SMART	SM00028	tpr_5	79	112	12.0	T	19-09-2025	IPR019734	Tetratricopeptide repeat	GO:0005515(InterPro)	-
+O95801	dffeed0cc947c0cfa80261a3ec8af030	387	SMART	SM00028	tpr_5	151	184	41.0	T	19-09-2025	IPR019734	Tetratricopeptide repeat	GO:0005515(InterPro)	-
+O95801	dffeed0cc947c0cfa80261a3ec8af030	387	Pfam	PF18972	Cns1/TTC4 Wheel domain	270	357	4.5E-17	T	19-09-2025	IPR044059	Cns1/TTC4, wheel domain	GO:0051879(InterPro)	-
+P00492	6e693beaf05d56c6a88edb2e65db28f5	218	Pfam	PF00156	Phosphoribosyl transferase domain	42	195	9.7E-22	T	19-09-2025	IPR000836	Phosphoribosyltransferase domain	-	-
+P03956	221aa3e9e789caee2a2a8c73bc624707	469	Pfam	PF01471	Putative peptidoglycan binding domain	28	87	1.0E-7	T	19-09-2025	IPR002477	Peptidoglycan binding-like	-	-
+P03956	221aa3e9e789caee2a2a8c73bc624707	469	Pfam	PF00045	Hemopexin	377	424	6.4E-14	T	19-09-2025	IPR018487	Hemopexin-like repeats	-	-
+P03956	221aa3e9e789caee2a2a8c73bc624707	469	Pfam	PF00045	Hemopexin	426	466	6.1E-4	T	19-09-2025	IPR018487	Hemopexin-like repeats	-	-
+P03956	221aa3e9e789caee2a2a8c73bc624707	469	Pfam	PF00045	Hemopexin	329	371	1.1E-7	T	19-09-2025	IPR018487	Hemopexin-like repeats	-	-
+P03956	221aa3e9e789caee2a2a8c73bc624707	469	Pfam	PF00045	Hemopexin	284	326	6.2E-7	T	19-09-2025	IPR018487	Hemopexin-like repeats	-	-
+P03956	221aa3e9e789caee2a2a8c73bc624707	469	SMART	SM00120	HX_rpt_3	284	326	2.4E-7	T	19-09-2025	IPR018487	Hemopexin-like repeats	-	-
+P03956	221aa3e9e789caee2a2a8c73bc624707	469	SMART	SM00120	HX_rpt_3	426	466	2.9E-5	T	19-09-2025	IPR018487	Hemopexin-like repeats	-	-
+P03956	221aa3e9e789caee2a2a8c73bc624707	469	SMART	SM00120	HX_rpt_3	328	372	3.7E-10	T	19-09-2025	IPR018487	Hemopexin-like repeats	-	-
+P03956	221aa3e9e789caee2a2a8c73bc624707	469	SMART	SM00120	HX_rpt_3	377	424	9.3E-17	T	19-09-2025	IPR018487	Hemopexin-like repeats	-	-
+P03956	221aa3e9e789caee2a2a8c73bc624707	469	SMART	SM00235	col_5	105	262	1.7E-58	T	19-09-2025	IPR006026	Peptidase, metallopeptidase	GO:0006508(InterPro)|GO:0008237(InterPro)|GO:0008270(InterPro)	-
