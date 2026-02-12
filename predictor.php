@@ -123,7 +123,7 @@
                             <div class="col-md-9">
                               <div class="form-group">
                                 <label for="predictor">Select Predictor</label>
-                                <select id="predictor" name="predictor" class="form-control" required="">
+                                <select id="predictor" name="model_name" class="form-control" required="">
                                   <option value="jingmingcn/PPI_esm2_t33_650M_UR50D">PPI_esm2_t33_650M_UR50D</option>
                                   <option value="Rostlab/prot_bert">prot_bert</option>
                                   <option value="Rostlab/prot_bert_bfd_ss3">prot_bert_bfd_ss3</option>

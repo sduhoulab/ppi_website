@@ -6,32 +6,50 @@ namespace Composer\Autoload;
 
 class ComposerStaticInite8c5cf4da999e4a91c38c13f11e6e6ca
 {
+    public static $files = array (
+        '051cbb2294fef6feb82b145e60ff5169' => __DIR__ . '/..' . '/satur.io/duckdb/aliases.php',
+        '14a65356cfc7aed76cf20b2a43431da5' => __DIR__ . '/..' . '/satur.io/duckdb/config.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
-        'G' => 
+        'S' =>
+        array (
+            'Saturio\\DuckDB\\' => 15,
+            'Saturio\\DuckDBInstaller\\' => 24,
+        ),
+        'G' =>
         array (
             'Gajus\\Dindent\\' => 14,
         ),
-        'A' => 
+        'A' =>
         array (
             'Archon\\' => 7,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Gajus\\Dindent\\' => 
+        'Saturio\\DuckDB\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/satur.io/duckdb/src',
+        ),
+        'Saturio\\DuckDBInstaller\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/satur.io/duckdb-auto/src',
+        ),
+        'Gajus\\Dindent\\' =>
         array (
             0 => __DIR__ . '/..' . '/gajus/dindent/src',
         ),
-        'Archon\\' => 
+        'Archon\\' =>
         array (
             0 => __DIR__ . '/..' . '/archon/dataframe/src',
         ),
     );
 
     public static $prefixesPsr0 = array (
-        'P' => 
+        'P' =>
         array (
-            'PHPExcel' => 
+            'PHPExcel' =>
             array (
                 0 => __DIR__ . '/..' . '/phpoffice/phpexcel/Classes',
             ),

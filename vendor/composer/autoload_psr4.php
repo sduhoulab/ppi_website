@@ -6,6 +6,8 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Saturio\\DuckDB\\' => array($vendorDir . '/satur.io/duckdb/src'),
+    'Saturio\\DuckDBInstaller\\' => array($vendorDir . '/satur.io/duckdb-auto/src'),
     'Gajus\\Dindent\\' => array($vendorDir . '/gajus/dindent/src'),
     'Archon\\' => array($vendorDir . '/archon/dataframe/src'),
 );
