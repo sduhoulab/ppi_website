@@ -117,14 +117,13 @@
           <table id="protome_table" >
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Accession</th>
+              <!-- uniprot_id	protein_name	gene_name	organism	sequence_length	function -->
+               <th>Uniprot ID</th>
               <th>Protein Name</th>
               <th>Gene</th>
+              <th>Organism</th>
               <th>Sequence Length</th>
-              <th>Interaction Residues Model</th>
-              <th>Interaction Residues PDB</th>
-              <th>Interaction Residues Alphafold</th>
+              <!-- <th>Function</th> -->
             </tr>
           </thead>
 
@@ -136,28 +135,22 @@
         <script>
      (function(){
         let table = new DataTable('#protome_table',{
-          ajax: "server_side/scripts/protome_server_processing.php",
+          ajax: "server_side/scripts/proteome_server_processing.php",
           processing: true,
           serverSide: true,
           scrollX: true,
           fixedHeader: true,
-          
           columnDefs: [
               {
-                  targets: 1,
+                  targets: 0,
                   render: function (data, type, row, meta) {
                       if (type === 'display') {
-                          let link = 'protein.php?uniprotId=' + row[1];
+                          let link = 'protein.php?uniprotId=' + row[0];
                           return '<a href="' + link + '" class="link-primary">' + data + '</a>';
                       }
                       return data;
                   }
               },
-              {
-                  targets: [0],
-                  visible: false
-              },
-              
               
           ],
           fixedColumns: {

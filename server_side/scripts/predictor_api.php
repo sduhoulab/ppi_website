@@ -5,6 +5,7 @@ $config = include( 'config.php' );
 $uniprotId = $_POST['uniprotId'] ?? '';
 $sequence = $_POST['proteinSeq'] ?? '';
 $cutoff = $_POST['cutoff'] ?? 0.5;
+$model_name = $_POST['model_name'] ?? 'jingmingcn/PPI_esm2_t33_650M_UR50D';
 
 // Try to match a string after ">"
 if (preg_match('/^>\s*([A-Za-z0-9_]+)/', $sequence, $matches)) {
@@ -34,13 +35,14 @@ $db = new PDO(
     ]
 );
 
-$sql = "select * from proteinSeqPredict where (uniprotId = :uniprotId or proteinSeq = :sequence)  order by createdAt desc limit 1";
+// $sql = "select * from proteinSeqPredict where (uniprotId = :uniprotId or proteinSeq = :sequence)  order by createdAt desc limit 1";
 
-$stmt = $db->prepare($sql);
-$stmt->bindParam(':uniprotId', $uniprotId);
-$stmt->bindParam(':sequence', $sequence);
-$stmt->execute();
-$result = $stmt->fetch();
+// $stmt = $db->prepare($sql);
+// $stmt->bindParam(':uniprotId', $uniprotId);
+// $stmt->bindParam(':sequence', $sequence);
+// $stmt->execute();
+// $result = $stmt->fetch();
+$result = null; // Disable caching for now, always predict new results
 if ($result) {
     $result['predictResult'] = json_decode($result['predictResult'], true);
     echo json_encode([
@@ -78,7 +80,7 @@ if ($result) {
     $response = curl_exec($ch);
 
     // Close cURL
-    curl_close($ch);
+    // curl_close($ch);
 
     // Check for errors
     if (curl_errno($ch)) {
