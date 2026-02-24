@@ -63,6 +63,7 @@ if ($result) {
     // Prepare data
     $data = [
         "sequence" => $sequence,
+        "model_name" => $model_name
     ];
 
     // Initialize cURL
