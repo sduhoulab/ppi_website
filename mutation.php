@@ -75,7 +75,7 @@ array_unshift($aminioAcidData, $header);
 (function(){
                 // SNP classes (ordered, top = largest)
                 // $snpData first row is header, the 1st column is the SNP class, the 2nd column is the count
-                console.log(<?php echo json_encode($snpData); ?>);
+                
     const snpClasses = [
         <?php
         $classes = [];
