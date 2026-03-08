@@ -24,16 +24,16 @@ if (empty($uniprotId) && !empty($uniprotId_)) {
     $uniprotId = $uniprotId_;
 }
 
-$db = new PDO(
-    "mysql:host={$config->dbHost};dbname={$config->dbName};charset={$config->dbCharset};port={$config->dbPort}",
-    $config->dbUser,
-    $config->dbPass,
-    [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        PDO::ATTR_EMULATE_PREPARES => false,
-    ]
-);
+// $db = new PDO(
+//     "mysql:host={$config->dbHost};dbname={$config->dbName};charset={$config->dbCharset};port={$config->dbPort}",
+//     $config->dbUser,
+//     $config->dbPass,
+//     [
+//         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+//         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+//         PDO::ATTR_EMULATE_PREPARES => false,
+//     ]
+// );
 
 // $sql = "select * from proteinSeqPredict where (uniprotId = :uniprotId or proteinSeq = :sequence)  order by createdAt desc limit 1";
 

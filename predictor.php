@@ -457,6 +457,8 @@ jQuery(function ($) {
 
         const mask = scores.map(s => s >= cutoff ? '1' : '0').join('');
         let result = [];
+        let content = [];
+        content.push('position\tAmino_Acid\tPrediction\tPrediction_score');
 
         for (let i = 0; i < mask.length; i++) {
             if (mask[i] === '1') {
@@ -464,11 +466,13 @@ jQuery(function ($) {
                 const letter = seq[i];      // corresponding amino acid
                 result.push(position + letter);
             }
+            content.push(i+'\t' + seq[i] + '\t' + mask[i] + '\t' + scores[i].toFixed(3));
         }
 
         var interfaceResidueEl = document.getElementById('interfaceResidue');
         if (interfaceResidueEl) {
           interfaceResidueEl.value = "> "+ uniprotId + " " +result.join(', ');
+          interfaceResidueEl.setAttribute('data-content', content.join('\n'));
         }
       };
 
@@ -487,7 +491,7 @@ jQuery(function ($) {
           e.preventDefault();
           var interfaceResidueEl = document.getElementById('interfaceResidue');
           if (interfaceResidueEl) {
-            var content = interfaceResidueEl.value;
+            var content = interfaceResidueEl.getAttribute('data-content');
             var blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
             var link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
