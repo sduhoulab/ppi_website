@@ -100,12 +100,12 @@ if ($result) {
         if($predictResult) {
             $predictResultJSON = json_encode($predictResult);
             // Store in database
-            $insertSql = "INSERT INTO proteinSeqPredict (uniprotId, proteinSeq, predictResult) VALUES (:uniprotId, :proteinSeq, :predictResult)";
-            $insertStmt = $db->prepare($insertSql);
-            $insertStmt->bindParam(':uniprotId', $uniprotId);
-            $insertStmt->bindParam(':proteinSeq', $sequence);
-            $insertStmt->bindParam(':predictResult', $predictResultJSON);
-            $insertStmt->execute();
+            // $insertSql = "INSERT INTO proteinSeqPredict (uniprotId, proteinSeq, predictResult) VALUES (:uniprotId, :proteinSeq, :predictResult)";
+            // $insertStmt = $db->prepare($insertSql);
+            // $insertStmt->bindParam(':uniprotId', $uniprotId);
+            // $insertStmt->bindParam(':proteinSeq', $sequence);
+            // $insertStmt->bindParam(':predictResult', $predictResultJSON);
+            // $insertStmt->execute();
 
             echo json_encode([
                 'status' => 'success',

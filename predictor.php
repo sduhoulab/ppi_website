@@ -331,8 +331,7 @@ jQuery(function ($) {
          
           uniprotId = response.data.uniprotId;
           seq = response.data.proteinSeq;
-          //yValues = response.data.predictResult[0];
-          yValues = response.data.prediction;
+          yValues = response.data.predictResult;
 
           updatePredictionResult(uniprotId, seq, yValues);
 
