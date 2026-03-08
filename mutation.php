@@ -72,8 +72,7 @@ $snpData = str_getcsv(file_get_contents('statistic/all_AA_change_statistic.csv')
         <?php
         $classes = [];
         for ($i = 1; $i < count($snpData); $i++) {
-            $row = $snpData[$i];
-            $classes[] = '"' . $row[0] . '"';
+            $classes[] = '"' . $snpData[0][$i] . '"';
         }
         echo implode(", ", $classes)   ;
     ?>
@@ -83,8 +82,7 @@ $snpData = str_getcsv(file_get_contents('statistic/all_AA_change_statistic.csv')
         <?php
         $vals = [];
         for ($i = 1; $i < count($snpData); $i++) {
-            $row = $snpData[$i];
-            $vals[] = $row[1];
+            $vals[] = $snpData[1][$i];
         }
         echo implode(", ", $vals);
     ?>
