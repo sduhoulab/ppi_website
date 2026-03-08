@@ -2,6 +2,14 @@
 <html lang="en">
 <?php
 $snpData =  array_map('str_getcsv', explode("\n", file_get_contents('statistic/all_AA_change_statistic.csv')));
+$aminioAcidData = array_map('str_getcsv', explode("\n", file_get_contents('statistic/all_Amino_acids_statistic.csv')));
+// sort $aminioAcidData by the 2nd column (count) in descending order, only keep top 10, but keep the header row at the top
+$header = array_shift($aminioAcidData);
+usort($aminioAcidData, function($a, $b) {
+    return $b[1] <=> $a[1];
+});
+$aminioAcidData = array_slice($aminioAcidData, 0, 10);
+array_unshift($aminioAcidData, $header);
 ?>
 <head>
 <?php include 'includes/head.php'; ?>
@@ -160,30 +168,24 @@ $snpData =  array_map('str_getcsv', explode("\n", file_get_contents('statistic/a
           (function(){
                 // Label list (ordered top → bottom)
     const aaChanges = [
-        "R/Q",
-        "R/H",
-        "R/C",
-        "R/W",
-        "E/K",
-        "R/G",
-        "Y/C",
-        "R/L",
-        "D/N",
-        "N/S"
+        <?php
+        $changes = [];
+        for ($i = 1; $i < count($aminioAcidData); $i++) {
+            $changes[] = '"' . $aminioAcidData[$i][0] . '"';
+        }
+        echo implode(", ", $changes);
+    ?>
     ];
 
     // Values from image
     const values = [
-        41782,
-        37588,
-        35674,
-        27043,
-        22088,
-        19056,
-        18622,
-        16031,
-        15861,
-        15107
+<?php
+        $vals = [];
+        for ($i = 1; $i < count($aminioAcidData); $i++) {
+            $vals[] = $aminioAcidData[$i][1];
+        }
+        echo implode(", ", $vals);
+    ?>
     ];
 
     // Color palette similar to the figure
