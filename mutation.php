@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-$snpData = fgetcsv('statistic/all_AA_change_statistic.csv');
-
+$snpData =  array_map('str_getcsv', explode("\n", file_get_contents('statistic/all_AA_change_statistic.csv')));
 ?>
 <head>
 <?php include 'includes/head.php'; ?>
