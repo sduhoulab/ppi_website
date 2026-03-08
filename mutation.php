@@ -68,11 +68,12 @@ $snpData = str_getcsv(file_get_contents('statistic/all_AA_change_statistic.csv')
 (function(){
                 // SNP classes (ordered, top = largest)
                 // $snpData first row is header, the 1st column is the SNP class, the 2nd column is the count
+                console.log(<?php echo json_encode($snpData); ?>);
     const snpClasses = [
         <?php
         $classes = [];
         for ($i = 1; $i < count($snpData); $i++) {
-            $classes[] = '"' . $snpData[0][$i] . '"';
+            $classes[] = '"' . $snpData[$i][0] . '"';
         }
         echo implode(", ", $classes)   ;
     ?>
@@ -82,7 +83,7 @@ $snpData = str_getcsv(file_get_contents('statistic/all_AA_change_statistic.csv')
         <?php
         $vals = [];
         for ($i = 1; $i < count($snpData); $i++) {
-            $vals[] = $snpData[1][$i];
+            $vals[] = $snpData[$i][1];
         }
         echo implode(", ", $vals);
     ?>
