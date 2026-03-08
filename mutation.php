@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+$snpData = str_getcsv(file_get_contents('statistic/all_AA_change_statistic.csv'));
 
+?>
 <head>
 <?php include 'includes/head.php'; ?>
   <!-- Datatable CSS File -->
@@ -64,35 +67,27 @@
         <script>
 (function(){
                 // SNP classes (ordered, top = largest)
+                // $snpData first row is header, the 1st column is the SNP class, the 2nd column is the count
     const snpClasses = [
-        "G>A",
-        "C>T",
-        "T>C",
-        "A>G",
-        "G>C",
-        "C>G",
-        "C>A",
-        "G>T",
-        "A>C",
-        "T>G",
-        "A>T",
-        "T>A"
+        <?php
+        $classes = [];
+        for ($i = 1; $i < count($snpData); $i++) {
+            $row = $snpData[$i];
+            $classes[] = '"' . $row[0] . '"';
+        }
+        echo implode(", ", $classes)   ;
+    ?>
     ];
-
     // Values taken from your chart
     const values = [
-        158000,
-        158000,
-        94233,
-        94178,
-        53947,
-        53707,
-        42666,
-        42569,
-        29090,
-        29023,
-        24483,
-        24216
+        <?php
+        $vals = [];
+        for ($i = 1; $i < count($snpData); $i++) {
+            $row = $snpData[$i];
+            $vals[] = $row[1];
+        }
+        echo implode(", ", $vals);
+    ?>
     ];
 
     // Color palette similar to your image
