@@ -13,7 +13,7 @@
             <a href=""><i class="bi bi-facebook"></i></a>
             <a href=""><i class="bi bi-instagram"></i></a>
             <a href=""><i class="bi bi-linkedin"></i></a> -->
-            <a href="https://www.github.com/sduhoulab/" target="_blank"><i class="bi bi-github"></i></a>
+            <!-- <a href="https://www.github.com/sduhoulab/" target="_blank"><i class="bi bi-github"></i></a> -->
           </div>
         </div>
 
@@ -35,7 +35,7 @@
           </ul>
         </div>
 
-        <div class="col-lg-4 col-md-12 footer-contact text-center text-md-start">
+        <div class="col-lg-4 col-md-12 footer-contact text-center text-md-start"  style="display:none">
           <h4>Contact Us</h4>
           <p>The Center for Bioinformatics (CBI)</p>
           <p>National Institute of Health Data Science of China</p>
@@ -49,7 +49,7 @@
     </div>
 
     <div class="container copyright text-center mt-4">
-      <p>©<span>2025</span> <strong class="px-1 sitename">PPI</strong> <span>All Rights Reserved</span></p>
+      <p>©<span>2026</span> <strong class="px-1 sitename">PPI</strong> <span>All Rights Reserved</span></p>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you've purchased the pro version. -->
@@ -88,9 +88,9 @@ token_id = getCookieByName('PHPSESSID');
     },
     auth: {
       type: 'token',
-      token: 'pat_D9VJRrkJ8gM3mi8Y7XT4ILJdTpXFJUBilGBmSghaSJWDYuY8mXfQLZ2Y20FxXCFD',
+      token: 'pat_NNHjBcN3DWv9ParIphjqmBndk7VKFXKO80dkCok9HLQDKY8tGoPl2jvMJTzT9E4M',
       onRefreshToken: function () {
-        return 'pat_D9VJRrkJ8gM3mi8Y7XT4ILJdTpXFJUBilGBmSghaSJWDYuY8mXfQLZ2Y20FxXCFD'
+        return 'pat_NNHjBcN3DWv9ParIphjqmBndk7VKFXKO80dkCok9HLQDKY8tGoPl2jvMJTzT9E4M'
       }
     },
     userInfo: {
