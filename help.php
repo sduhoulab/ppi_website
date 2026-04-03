@@ -88,7 +88,7 @@
         </div>
 
         <!-- Contact Section -->
-        <div class="privacy-contact" data-aos="fade-up">
+        <!-- <div class="privacy-contact" data-aos="fade-up">
           <h2>Contact Us</h2>
           <p>For technical support or inquiries, please contact us at::</p>
           <div class="contact-details">
@@ -99,7 +99,7 @@ National Institute of Health Data Science of China
 
 Shandong University, Shandong, P. R. China.</p>
           </div>
-        </div>
+        </div> -->
 
       </div>
 
