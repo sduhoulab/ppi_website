@@ -2,16 +2,16 @@
 
     <div class="topbar d-flex align-items-center dark-background">
       <div class="container d-flex justify-content-center justify-content-md-between">
-        <div class="contact-info d-flex align-items-center">
-          <i class="bi bi-envelope d-flex align-items-center" style="display:none"><a href="mailto:houqingzhen@sdu.edu.cn">houqingzhen@sdu.edu.cn</a></i>
-          <i class="bi bi-building d-flex align-items-center ms-4"><span  style="display:none">The Center for Bioinformatics (CBI), National Institute of Health Data Science of China</span></i>
+        <div class="contact-info d-flex align-items-center" style="display:none">
+          <i class="bi bi-envelope d-flex align-items-center" ><a href="mailto:houqingzhen@sdu.edu.cn">houqingzhen@sdu.edu.cn</a></i>
+          <i class="bi bi-building d-flex align-items-center ms-4"><span>The Center for Bioinformatics (CBI), National Institute of Health Data Science of China</span></i>
         </div>
         <div class="social-links d-none d-md-flex align-items-center">
           <!-- <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
           <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
           <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
           <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a> -->
-          <a href="https://www.github.com/sduhoulab/" class="github" target="_blank"><i class="bi bi-github"></i></a>
+          <!-- <a href="https://www.github.com/sduhoulab/" class="github" target="_blank"><i class="bi bi-github"></i></a> -->
         </div>
       </div>
     </div><!-- End Top Bar -->
