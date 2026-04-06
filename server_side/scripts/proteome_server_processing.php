@@ -59,9 +59,10 @@ if (!empty($order)) {
 $where = 'WHERE 1=1';
 $params = [];
 if ($searchValue !== '') {
-    $searchLike = '%' . $searchValue . '%';
+    $searchLike = '' . $searchValue . '%';
     // Adjust columns to your actual schema
-    $searchableCols = ['uniprot_id', 'protein_name', 'gene_name', 'organism', 
+    $searchableCols = ['uniprot_id', 
+    //'protein_name', 'gene_name', 'organism', 
 	// 'sequence_length', 
 	// 'function'
 	]; // ← customize!
