@@ -39,22 +39,22 @@
                 <div class="badge-item">
                   <i class="bi bi-flask"></i>
                   <div class="badge-text">
-                    <span class="count">9,854,603</span>
+                    <span class="count">11,444,263</span>
                     <span class="label">Residues</span>
                   </div>
                 </div>
                 <div class="badge-item">
                   <i class="bi bi-link-45deg"></i>
                   <div class="badge-text">
-                    <span class="count">1,168,160</span>
+                    <span class="count">1,208,361</span>
                     <span class="label">Predicted Interface Sites</span>
                   </div>
                 </div>
                 <div class="badge-item">
                   <i class="bi bi-tags"></i>
                   <div class="badge-text">
-                    <span class="count">XXX, XXX</span>
-                    <span class="label">Annotated Pathogenic Variants</span>
+                    <span class="count">7,687,530</span>
+                    <span class="label">Annotated Variants</span>
                   </div>
                 </div>
               </div>
