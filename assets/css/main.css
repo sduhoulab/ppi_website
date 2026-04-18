@@ -1603,6 +1603,11 @@ section,
   font-weight: 500;
 }
 
+.project .project-links {
+  display: flex;
+  gap: 15px;
+}
+
 .projects .project-link {
   display: inline-flex;
   align-items: center;
