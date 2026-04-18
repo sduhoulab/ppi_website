@@ -36,10 +36,10 @@
                 <span class="project-category">Open Access</span>
                 <span class="project-status completed">Completed</span>
               </div>
-              <h3 class="project-title">Protein Residues Prediction Scores</h3>
+              <h3 class="project-title">Variant Web Clinvar </h3>
               <div class="project-details">
                 <div class="project-info">
-                  <p>The dataset provides 20K+ Prediction Residues Prediction Scores.</p>
+                  <p>Variant Web Clinvar Description.</p>
                   <div class="project-specs">
                     <span class="spec-item">
                       <i class="bi bi-droplet"></i>
@@ -53,7 +53,7 @@
                 </div>
                 <div class="project-location">
                   <i class="bi bi-file-earmark-zip-fill"></i>
-                  <span>File Size: 32.6 Mb</span>
+                  <span>File Size: 32.6 MB</span>
                 </div>
               </div>
               <div class="project-links">
@@ -81,14 +81,14 @@
                 <span class="project-category">Open Access</span>
                 <span class="project-status completed">Completed</span>
               </div>
-              <h3 class="project-title">Annotated Pathogenic Variants</h3>
+              <h3 class="project-title">Variant Web Gnomad</h3>
               <div class="project-details">
                 <div class="project-info">
-                  <p>The dataset provide about XX,XXX Annotated Pathogenic Variants.</p>
+                  <p>Variant Web Gnomad.</p>
                   <div class="project-specs">
                     <span class="spec-item">
                       <i class="bi bi-tags"></i>
-                      XX,XXX Records
+                      5,693,698 Records
                     </span>
                     <span class="spec-item">
                       <i class="bi bi-calendar-check"></i>
@@ -98,13 +98,19 @@
                 </div>
                 <div class="project-location">
                   <i class="bi bi-file-earmark-zip-fill"></i>
-                  <span>File Size: 200 Mb+</span>
+                  <span>File Size: 115.8 MB</span>
                 </div>
               </div>
-              <a href="dataset.zip" class="project-link">
-                <span>Download</span>
-                <i class="bi bi-cloud-download-fill"></i>
-              </a>
+              <div class="project-links"> 
+                <a href="dataset/variant_web_gnomad.csv.zip" class="project-link">
+                  <span>Download</span>
+                  <i class="bi bi-cloud-download-fill"></i>
+                </a>
+                <a href="https://github.com/sduhoulab/ppi_proteome_mutation_dataset/releases/download/release/variant_web_gnomad.csv.zip" class="project-link">
+                  <span>Download</span>
+                  <i class="bi bi-github"></i>
+                </a>
+              </div>
             </div>
             <div class="project-visual">
               <img src="assets/img/Life-of-Proteins.jpg" alt="" class="img-fluid">
@@ -120,14 +126,14 @@
                 <span class="project-category">Open Access</span>
                 <span class="project-status completed">Completed</span>
               </div>
-              <h3 class="project-title">Protein Residues Prediction Scores</h3>
+              <h3 class="project-title">Variant Web UKB</h3>
               <div class="project-details">
                 <div class="project-info">
-                  <p>The dataset provides 20K+ Prediction Residues Prediction Scores.</p>
+                  <p>Variant Web UKB.</p>
                   <div class="project-specs">
                     <span class="spec-item">
                       <i class="bi bi-droplet"></i>
-                      20K+ Scores
+                      2,029,421 Records
                     </span>
                     <span class="spec-item">
                       <i class="bi bi-calendar-check"></i>
@@ -137,16 +143,22 @@
                 </div>
                 <div class="project-location">
                   <i class="bi bi-file-earmark-zip-fill"></i>
-                  <span>File Size: 200 Mb+</span>
+                  <span>File Size: 48.8 MB</span>
                 </div>
               </div>
-              <a href="dataset.zip" class="project-link">
-                <span>Download</span>
-                <i class="bi bi-cloud-download-fill"></i>
-              </a>
+              <div class="project-links">
+                <a href="dataset/variant_web_ukb.csv.zip" class="project-link">
+                  <span>Download</span>
+                  <i class="bi bi-cloud-download-fill"></i>
+                </a>
+                <a href="https://github.com/sduhoulab/ppi_proteome_mutation_dataset/releases/download/release/variant_web_ukb.csv.zip" class="project-link">
+                  <span>Download</span>
+                  <i class="bi bi-github"></i>
+                </a>
+              </div>
             </div>
             <div class="project-visual">
-              <img src="assets/img/Protein-Biology-Cells.webp" alt="" class="img-fluid">
+              <img src="assets/img/download-bg3.jpg" alt="" class="img-fluid">
               <div class="project-badge">
                 <i class="bi bi-award"></i>
               </div>
@@ -159,14 +171,14 @@
                 <span class="project-category">Open Access</span>
                 <span class="project-status completed">Completed</span>
               </div>
-              <h3 class="project-title">Protein Residues Prediction Scores</h3>
+              <h3 class="project-title">Variant All</h3>
               <div class="project-details">
                 <div class="project-info">
-                  <p>The dataset provides 20K+ Prediction Residues Prediction Scores.</p>
+                  <p>Variant All.</p>
                   <div class="project-specs">
                     <span class="spec-item">
                       <i class="bi bi-droplet"></i>
-                      20K+ Scores
+                      8,530,635 Scores
                     </span>
                     <span class="spec-item">
                       <i class="bi bi-calendar-check"></i>
@@ -176,16 +188,22 @@
                 </div>
                 <div class="project-location">
                   <i class="bi bi-file-earmark-zip-fill"></i>
-                  <span>File Size: 200 Mb+</span>
+                  <span>File Size: 105.9 MB</span>
                 </div>
               </div>
-              <a href="dataset.zip" class="project-link">
+              <div class="project-links">
+              <a href="dataset/variant_all.csv.zip" class="project-link">
                 <span>Download</span>
                 <i class="bi bi-cloud-download-fill"></i>
               </a>
+              <a href="https://github.com/sduhoulab/ppi_proteome_mutation_dataset/releases/download/release/variant_all.csv.zip" class="project-link">
+                <span>Download</span>
+                <i class="bi bi-github"></i>
+              </a>
+              </div>
             </div>
             <div class="project-visual">
-              <img src="assets/img/Protein-Biology-Cells.webp" alt="" class="img-fluid">
+              <img src="assets/img/download-bg4.webp" alt="" class="img-fluid">
               <div class="project-badge">
                 <i class="bi bi-award"></i>
               </div>
