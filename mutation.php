@@ -355,30 +355,26 @@ array_unshift($aminioAcidData, $header);
           <table id="mutation_table" >
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Chromosome</th>
-              <th>Position</th>
-              <th>Uploaded Variation</th>
-              <th>Reference Allele</th>
-              <th>Alternate Allele</th>
-              <th>Clinical Review Status</th>
-              <th>Clinical Significance</th>
-              <th>Consequence</th>
-              <th>Existing Variation</th>
-              <th>SWISSPROT</th>
-              <th>TREMBL</th>
-              <th>Protein Position</th>
-              <th>Amino Acids</th>
-              <th>Canonical</th>
-              <th>SIFT Type</th>
-              <th>SIFT Score</th>
-              <th>Polyphen Type</th>
-              <th>Polyphen Score</th>
-              <th>PPI</th>
-              <th>3Dmapper Result</th>
-              <th>Gene</th>
-              <th>Feature</th>
-              <th>Gene Symbol</th>
+              <!--//CHROM,POS,REF,ALT,Consequence,Gene,Feature,Gene_symbol,SWISSPROT,Protein_position,Amino_acids,canonical,clin_sig,SIFT_type,SIFT_score,Polyphen_type,Polyphen_score,3Dmapper_result,PPI-->
+                <th>CHROM</th>
+                <th>POS</th>
+                <th>REF</th>
+                <th>ALT</th>
+                <th>Consequence</th>
+                <th>Gene</th>
+                <th>Feature</th>
+                <th>Gene_symbol</th>
+                <th>SWISSPROT</th>
+                <th>Protein_position</th>
+                <th>Amino_acids</th>
+                <th>canonical</th>
+                <th>clin_sig</th>
+                <th>SIFT_type</th>
+                <th>SIFT_score</th>
+                <th>Polyphen_type</th>
+                <th>Polyphen_score</th>
+                <th>3Dmapper_result</th>
+                <th>PPI</th>
             </tr>
           </thead>
         </table>
