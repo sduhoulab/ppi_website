@@ -43,22 +43,26 @@
                   <div class="project-specs">
                     <span class="spec-item">
                       <i class="bi bi-droplet"></i>
-                      20K+ Scores
+                      1,241,789 Records
                     </span>
                     <span class="spec-item">
                       <i class="bi bi-calendar-check"></i>
-                      Release Date: Dec, 2025
+                      Release Date: Apr, 2026
                     </span>
                   </div>
                 </div>
                 <div class="project-location">
                   <i class="bi bi-file-earmark-zip-fill"></i>
-                  <span>File Size: 200 Mb+</span>
+                  <span>File Size: 32.6 Mb</span>
                 </div>
               </div>
-              <a href="dataset.zip" class="project-link">
-                <span>Download</span>
+              <a href="dataset/variant_web_clinvar.csv.zip" class="project-link">
+                <span>Local Download</span>
                 <i class="bi bi-cloud-download-fill"></i>
+              </a>
+              <a href="https://github.com/sduhoulab/ppi_proteome_mutation_dataset/releases/download/release/variant_web_clinvar.csv.zip" class="project-link">
+                <span>Remote Download</span>
+                <i class="bi bi-github"></i>
               </a>
             </div>
             <div class="project-visual">
@@ -72,8 +76,8 @@
           <div class="project-item" data-aos="zoom-in" data-aos-delay="200">
             <div class="project-content">
               <div class="project-header">
-                <span class="project-category">Approval required</span>
-                <span class="project-status in-progress">In Progress</span>
+                <span class="project-category">Open Access</span>
+                <span class="project-status completed">Completed</span>
               </div>
               <h3 class="project-title">Annotated Pathogenic Variants</h3>
               <div class="project-details">
@@ -108,7 +112,83 @@
             </div>
           </div><!-- End Project Item -->
 
+          <div class="project-item" data-aos="zoom-in" data-aos-delay="100">
+            <div class="project-content">
+              <div class="project-header">
+                <span class="project-category">Open Access</span>
+                <span class="project-status completed">Completed</span>
+              </div>
+              <h3 class="project-title">Protein Residues Prediction Scores</h3>
+              <div class="project-details">
+                <div class="project-info">
+                  <p>The dataset provides 20K+ Prediction Residues Prediction Scores.</p>
+                  <div class="project-specs">
+                    <span class="spec-item">
+                      <i class="bi bi-droplet"></i>
+                      20K+ Scores
+                    </span>
+                    <span class="spec-item">
+                      <i class="bi bi-calendar-check"></i>
+                      Release Date: Dec, 2025
+                    </span>
+                  </div>
+                </div>
+                <div class="project-location">
+                  <i class="bi bi-file-earmark-zip-fill"></i>
+                  <span>File Size: 200 Mb+</span>
+                </div>
+              </div>
+              <a href="dataset.zip" class="project-link">
+                <span>Download</span>
+                <i class="bi bi-cloud-download-fill"></i>
+              </a>
+            </div>
+            <div class="project-visual">
+              <img src="assets/img/Protein-Biology-Cells.webp" alt="" class="img-fluid">
+              <div class="project-badge">
+                <i class="bi bi-award"></i>
+              </div>
+            </div>
+          </div><!-- End Project Item -->
 
+          <div class="project-item" data-aos="zoom-in" data-aos-delay="100">
+            <div class="project-content">
+              <div class="project-header">
+                <span class="project-category">Open Access</span>
+                <span class="project-status completed">Completed</span>
+              </div>
+              <h3 class="project-title">Protein Residues Prediction Scores</h3>
+              <div class="project-details">
+                <div class="project-info">
+                  <p>The dataset provides 20K+ Prediction Residues Prediction Scores.</p>
+                  <div class="project-specs">
+                    <span class="spec-item">
+                      <i class="bi bi-droplet"></i>
+                      20K+ Scores
+                    </span>
+                    <span class="spec-item">
+                      <i class="bi bi-calendar-check"></i>
+                      Release Date: Dec, 2025
+                    </span>
+                  </div>
+                </div>
+                <div class="project-location">
+                  <i class="bi bi-file-earmark-zip-fill"></i>
+                  <span>File Size: 200 Mb+</span>
+                </div>
+              </div>
+              <a href="dataset.zip" class="project-link">
+                <span>Download</span>
+                <i class="bi bi-cloud-download-fill"></i>
+              </a>
+            </div>
+            <div class="project-visual">
+              <img src="assets/img/Protein-Biology-Cells.webp" alt="" class="img-fluid">
+              <div class="project-badge">
+                <i class="bi bi-award"></i>
+              </div>
+            </div>
+          </div><!-- End Project Item -->
 
 
 
