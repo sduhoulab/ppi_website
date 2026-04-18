@@ -57,11 +57,11 @@
                 </div>
               </div>
               <a href="dataset/variant_web_clinvar.csv.zip" class="project-link">
-                <span>Local Download</span>
+                <span>Download</span>
                 <i class="bi bi-cloud-download-fill"></i>
               </a>
               <a href="https://github.com/sduhoulab/ppi_proteome_mutation_dataset/releases/download/release/variant_web_clinvar.csv.zip" class="project-link">
-                <span>Remote Download</span>
+                <span>Download</span>
                 <i class="bi bi-github"></i>
               </a>
             </div>
