@@ -56,14 +56,16 @@
                   <span>File Size: 32.6 Mb</span>
                 </div>
               </div>
-              <a href="dataset/variant_web_clinvar.csv.zip" class="project-link">
-                <span>Download</span>
-                <i class="bi bi-cloud-download-fill"></i>
-              </a>
-              <a href="https://github.com/sduhoulab/ppi_proteome_mutation_dataset/releases/download/release/variant_web_clinvar.csv.zip" class="project-link">
-                <span>Download</span>
-                <i class="bi bi-github"></i>
-              </a>
+              <div class="project-links">
+                  <a href="dataset/variant_web_clinvar.csv.zip" class="project-link">
+                    <span>Download</span>
+                    <i class="bi bi-cloud-download-fill"></i>
+                  </a>
+                  <a href="https://github.com/sduhoulab/ppi_proteome_mutation_dataset/releases/download/release/variant_web_clinvar.csv.zip" class="project-link">
+                    <span>Download</span>
+                    <i class="bi bi-github"></i>
+                  </a>
+              </div>
             </div>
             <div class="project-visual">
               <img src="assets/img/Protein-Biology-Cells.webp" alt="" class="img-fluid">
