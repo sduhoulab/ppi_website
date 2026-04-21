@@ -7,56 +7,116 @@ $config = include( 'server_side/scripts/config.php' );
 $uniprotId = $_GET['uniprotId'] ?? 'P15516';
 
 
-$db = new PDO(
-    "mysql:host={$config->dbHost};dbname={$config->dbName};charset={$config->dbCharset};port={$config->dbPort}",
-    $config->dbUser,
-    $config->dbPass,
-    [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        PDO::ATTR_EMULATE_PREPARES => false,
-    ]
-);
+use Saturio\DuckDB\DuckDB;
+use Saturio\DuckDB\DB\Configuration;
 
-$sql = "SELECT * FROM proteome_interface_residue WHERE uniprot_id = :uniprotId LIMIT 1";
-$stmt = $db->prepare($sql);
-$stmt->bindParam(':uniprotId', $uniprotId);
-$stmt->execute();
-$protein = $stmt->fetch();
-if (!$protein) {
+$config = new Configuration();
+// $config->set('access_mode', 'READ_ONLY');
+$config->set('threads', '4');
+
+$duckdb = DuckDB::create(':memory:', config: $config); 
+
+$dsProtein = "read_csv_auto('dataset/protein_info.txt', header=true, delim='\t')";
+$dsProteome = "read_csv_auto('dataset/proteome_final.txt', header=true, delim='\t')";
+$dsPair = "read_csv_auto('dataset/pair.txt', header=true, delim='\t')";
+$dsDomain = "read_csv_auto('dataset/domain.tsv', header=true, delim='\t')";
+
+// $db = new PDO(
+//     "mysql:host={$config->dbHost};dbname={$config->dbName};charset={$config->dbCharset};port={$config->dbPort}",
+//     $config->dbUser,
+//     $config->dbPass,
+//     [
+//         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+//         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+//         PDO::ATTR_EMULATE_PREPARES => false,
+//     ]
+// );
+
+$columns_proteome = [
+    "uniprot_id",
+    "interface_residues_predicted",
+    "sequence",
+    "interface_residues_PDB",
+    "sequence_PDB",
+    "uniprot_id_final",
+    "interface_residues_AF2",
+    "sequence_AF2",
+    "same_sequence"
+];
+
+$columns_protein = [
+    "uniprot_id",
+    "protein_name",
+    "gene_name",
+    "organism",
+    "sequence_length",
+    "function"
+];
+
+$columns_pair = [
+    "uniprot1",
+    "uniprot2",
+    "source",
+    "interface_residues1",
+    "interface_residues2"
+];
+
+$columns_domain = [
+    "uniprot_id",
+    "sequence_md5",
+    "sequence_length",
+    "database",
+    "database_accession",
+    "database_description",
+    "start_location",
+    "end_location",
+    "e_value",
+    "status",
+    "date_annotated",
+    "interpro_accession",
+    "interpro_description",
+    "go_molecular_function",
+    "go_biological_process"
+];
+
+$sql = "SELECT * FROM $dsProteome WHERE uniprot_id = '$uniprotId' LIMIT 1";
+
+$result  = $duckdb->query($sql);
+$rows = $result->rows();
+$rows->rewind();
+$proteome = $rows->current();
+
+if (!$proteome) {
     die('Protein not found');
 }
-$sequence = htmlspecialchars($protein['sequence']);
-$interface_residues_predicted = htmlspecialchars($protein['interface_residues_predicted']);
-$sequence_PDB = htmlspecialchars($protein['sequence_PDB']);
-$interface_residues_PDB = htmlspecialchars($protein['interface_residues_PDB']);
-$sequence_AF2 = htmlspecialchars($protein['sequence_AF2']);
-$interface_residues_AF2 = htmlspecialchars($protein['interface_residues_AF2']);
+$sequence = htmlspecialchars($proteome[array_search('sequence',$columns_proteome,true)]?? 'N/A');
+$interface_residues_predicted = htmlspecialchars($proteome[array_search('interface_residues_predicted',$columns_proteome,true)]?? 'N/A');
+$sequence_PDB = htmlspecialchars($proteome[array_search('sequence_PDB',$columns_proteome,true)]?? 'N/A');
+$interface_residues_PDB = htmlspecialchars($proteome[array_search('interface_residues_PDB',$columns_proteome,true)]?? 'N/A');
+$sequence_AF2 = htmlspecialchars($proteome[array_search('sequence_AF2',$columns_proteome,true)]?? 'N/A');
+$interface_residues_AF2 = htmlspecialchars($proteome[array_search('interface_residues_AF2',$columns_proteome,true)]?? 'N/A');
 
+$sql = "SELECT * FROM $dsProtein WHERE uniprot_id = '$uniprotId' LIMIT 1";
+$result  = $duckdb->query($sql);
+$rows = $result->rows();
+$rows->rewind();
+$protein_info = $rows->current();
+$uniprot_id = htmlspecialchars($protein_info[array_search('protein_info',$columns_protein,true)] ?? 'N/A');
+$protein_name = htmlspecialchars($protein_info[array_search('protein_name',$columns_protein,true)] ?? 'N/A');
+$gene_name = htmlspecialchars($protein_info[array_search('protein_name',$columns_protein,true)] ?? 'N/A');
+$organism = htmlspecialchars($protein_info[array_search('organism',$columns_protein,true)] ?? 'N/A');
+$sequence_length = htmlspecialchars($protein_info[array_search('sequence_length',$columns_protein,true)] ?? 'N/A');
+$function = htmlspecialchars($protein_info[array_search('function',$columns_protein,true)] ?? 'N/A');
 
-$sql = "SELECT * FROM protein_info WHERE uniprot_id = :uniprotId LIMIT 1";
-$stmt = $db->prepare($sql);
-$stmt->bindParam(':uniprotId', $uniprotId);
-$stmt->execute();
-$protein_info = $stmt->fetch();
-$uniprot_id = htmlspecialchars($protein_info['uniprot_id'] ?? 'N/A');
-$protein_name = htmlspecialchars($protein_info['protein_name'] ?? 'N/A');
-$gene_name = htmlspecialchars($protein_info['gene_name'] ?? 'N/A');
-$organism = htmlspecialchars($protein_info['organism'] ?? 'N/A');
-$sequence_length = htmlspecialchars($protein_info['sequence_length'] ?? 'N/A');
-$function = htmlspecialchars($protein_info['function'] ?? 'N/A');
-
-$sql = "SELECT * FROM pair WHERE uniprot1 = :uniprotId1 or uniprot2 = :uniprotId2";
-$stmt = $db->prepare($sql);
-$stmt->bindParam(':uniprotId1', $uniprotId);
-$stmt->bindParam(':uniprotId2', $uniprotId);
-$stmt->execute();
-$pairs = $stmt->fetchAll();
-foreach ($pairs as &$pair) {
-    $input = $pair['interface_residues1'];
+$sql = "SELECT * FROM $dsPair WHERE uniprot1 = '$uniprotId' or uniprot2 = '$uniprotId'";
+$result  = $duckdb->query($sql);
+$rows = $result->rows();
+$pairs = [];
+foreach ($rows as $row) {
+    $input = $row[array_search('interface_residues1',$columns_pair,true)] ?? '';
 
     $parts = explode(',', $input);
-    $result = [];
+    $r = [];
 
     $numbers = [];
 
@@ -71,7 +131,7 @@ foreach ($pairs as &$pair) {
 
     for ($i = 1; $i <= count($numbers); $i++) {
         if ($i === count($numbers) || $numbers[$i] !== $prev + 1) {
-            $result[] = [
+            $r[] = [
                 'struct_asym_id' => 'A',
                 'start_residue_number' => $start,
                 'end_residue_number' => $prev
@@ -84,8 +144,13 @@ foreach ($pairs as &$pair) {
             $prev = $numbers[$i];
         }
     }
-
-    $pair['residues'] = $result;
+    $pair = [
+        'uniprot1' => htmlspecialchars($row[array_search('uniprot1',$columns_pair,true)] ?? 'N/A'),
+        'uniprot2' => htmlspecialchars($row[array_search('uniprot2',$columns_pair,true)] ?? 'N/A'),
+        'source' => htmlspecialchars($row[array_search('source',$columns_pair,true)] ?? 'N/A'),
+    ];
+    $pair['residues'] = $r;
+    $pairs[] = $pair;
 }
 
 error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
@@ -96,19 +161,18 @@ if (!file_exists($filename)) {
     $df_score = DataFrame::fromCSV($filename , ['sep'=>"\t"]);
 }
 
-$sql = "SELECT * FROM domain WHERE uniprot_id = :uniprotId";
-$stmt = $db->prepare($sql);
-$stmt->bindParam(':uniprotId', $uniprotId);
-$stmt->execute();
-$domains = $stmt->fetchAll();
+$sql = "SELECT * FROM $dsDomain WHERE uniprot_id = '$uniprotId'";
+
+$result = $duckdb->query($sql);
+$domains = $result->rows();
 
 foreach($domains as $domain){
-  if(strtoupper($domain['database'] )==='PFAM'){
-    $pfam_start = $domain['start_location'];
-    $pfam_end = $domain['end_location'];
-  }else if(strtoupper($domain['database'])==='SMART'){
-    $smart_start = $domain['start_location'];
-    $smart_end = $domain['end_location'];
+  if(strtoupper($domain[array_search('database',$columns_domain,true)] )==='PFAM'){
+    $pfam_start = $domain[ array_search('start_location',$columns_domain,true)];
+    $pfam_end = $domain[ array_search('end_location',$columns_domain,true)];
+  }else if(strtoupper($domain[ array_search('database',$columns_domain,true)])==='SMART'){
+    $smart_start = $domain[ array_search('start_location',$columns_domain,true)];
+    $smart_end = $domain[ array_search('end_location',$columns_domain,true)];
   }
 }
 

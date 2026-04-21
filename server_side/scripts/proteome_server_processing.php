@@ -9,15 +9,14 @@ header('Access-Control-Allow-Headers: Content-Type');
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 use Saturio\DuckDB\DuckDB;
+use Saturio\DuckDB\DB\Configuration;
 
-// Initialize DuckDB (in-memory or persistent file)
-$duckdb = DuckDB::create(); // or new DuckDB('mydata.duckdb');
+$config = new Configuration();
+// $config->set('access_mode', 'READ_ONLY');
+$config->set('threads', '4');
 
-// Optional: enable HTTPFS for remote Parquet/CSV on S3/GCS/R2
-// $duckdb->query("INSTALL httpfs; LOAD httpfs;");
+$duckdb = DuckDB::create(':memory:', config: $config); 
 
-// Your data source – use Parquet for best performance
-// $dataSource = "read_parquet('data/*.parquet')"; // or 'large.csv' / read_csv_auto('large.csv')
 $dataSource = "read_csv_auto('../../dataset/protein_info.txt', header=true, delim='\t')";
 
 $request = json_decode(file_get_contents('php://input'), true) ?: $_GET;
