@@ -392,13 +392,6 @@ array_unshift($aminioAcidData, $header);
           fixedHeader: true,
           
           columnDefs: [
-              
-              {
-                  targets: [0],
-                  visible: false
-              },
-              
-              
           ],
           fixedColumns: {
             left: 1,
