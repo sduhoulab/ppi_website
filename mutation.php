@@ -1,15 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-$snpData =  array_map('str_getcsv', explode("\n", file_get_contents('statistic/all_AA_change_statistic.csv')));
-$aminioAcidData = array_map('str_getcsv', explode("\n", file_get_contents('statistic/all_Amino_acids_statistic.csv')));
-// sort $aminioAcidData by the 2nd column (count) in descending order, only keep top 10, but keep the header row at the top
-$header = array_shift($aminioAcidData);
-usort($aminioAcidData, function($a, $b) {
-    return $b[1] <=> $a[1];
-});
-$aminioAcidData = array_slice($aminioAcidData, 0, 10);
-array_unshift($aminioAcidData, $header);
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
+
+// Load all statistic CSV files
+$csvFiles = [
+    'all_AA_change' => 'statistic/all_AA_change_statistic.csv',
+    'all_Amino_acids' => 'statistic/all_Amino_acids_statistic.csv',
+    'all_Gene_symbol' => 'statistic/all_Gene_symbol_statistic.csv',
+    'all_SWISSPROT' => 'statistic/all_SWISSPROT_statistic.csv',
+    'ppi_AA_change' => 'statistic/ppi_AA_change_statistic.csv',
+    'ppi_Amino_acids' => 'statistic/ppi_Amino_acids_statistic.csv',
+    'ppi_Gene_symbol' => 'statistic/ppi_Gene_symbol_statistic.csv',
+    'ppi_SWISSPROT' => 'statistic/ppi_SWISSPROT_statistic.csv',
+    'non_ppi_AA_change' => 'statistic/non_ppi_AA_change_statistic.csv',
+    'non_ppi_Amino_acids' => 'statistic/non_ppi_Amino_acids_statistic.csv',
+    'non_ppi_Gene_symbol' => 'statistic/non_ppi_Gene_symbol_statistic.csv',
+    'non_ppi_SWISSPROT' => 'statistic/non_ppi_SWISSPROT_statistic.csv'
+];
+
+$csvData = [];
+foreach ($csvFiles as $key => $file) {
+    if (file_exists($file)) {
+        $csvData[$key] = array_map('str_getcsv', explode("\n", file_get_contents($file)));
+        // Remove empty last line if exists
+        if (empty($csvData[$key][count($csvData[$key])-1])) {
+            array_pop($csvData[$key]);
+        }
+    }
+}
+
+// Helper function to get top N items from CSV data
+function getTopItems($data, $n = 10) {
+    if (count($data) <= 1) return [];
+    $header = array_shift($data);
+    // Sort by count (second column) descending
+    usort($data, function($a, $b) {
+        return (float)$b[1] <=> (float)$a[1];
+    });
+    $result = array_slice($data, 0, $n);
+    array_unshift($result, $header);
+    return $result;
+}
 ?>
 <head>
 <?php include 'includes/head.php'; ?>
@@ -57,6 +89,141 @@ array_unshift($aminioAcidData, $header);
     </section>
     <!--End Privacy Section -->
 
+    <section id="chart-section" class="starter-section section">
+      <div class="container" data-aos="fade-up">
+        <div class="row g-3 align-items-center">
+          <div class="col-12">
+            <h2 class="section-title">Mutation Statistics Overview</h2>
+            <p class="section-description">Explore comprehensive statistics of genetic variants across different categories and data types.</p>
+          </div>
+        </div>
+
+        <!-- Tabbed Chart Interface -->
+        <div class="row g-3">
+          <div class="col-12">
+            <ul class="nav nav-tabs" id="chartTabs" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all-charts" type="button" role="tab" aria-controls="all-charts" aria-selected="true">
+                  <div class="tab-header">
+                    <div class="tab-title">All Variants</div>
+                    <div class="tab-preview" id="all-preview"></div>
+                  </div>
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="ppi-tab" data-bs-toggle="tab" data-bs-target="#ppi-charts" type="button" role="tab" aria-controls="ppi-charts" aria-selected="false">
+                  <div class="tab-header">
+                    <div class="tab-title">PPI Variants</div>
+                    <div class="tab-preview" id="ppi-preview"></div>
+                  </div>
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="non-ppi-tab" data-bs-toggle="tab" data-bs-target="#non-ppi-charts" type="button" role="tab" aria-controls="non-ppi-charts" aria-selected="false">
+                  <div class="tab-header">
+                    <div class="tab-title">Non-PPI Variants</div>
+                    <div class="tab-preview" id="non-ppi-preview"></div>
+                  </div>
+                </button>
+              </li>
+            </ul>
+
+            <div class="tab-content" id="chartTabsContent">
+              <!-- All Variants Tab -->
+              <div class="tab-pane fade show active" id="all-charts" role="tabpanel" aria-labelledby="all-tab">
+                <div class="row g-4 mt-3">
+                  <div class="col-12 col-lg-6">
+                    <div class="chart-container">
+                      <h4>Nucleotide Substitutions (AA Changes)</h4>
+                      <div id="all-aa-change-chart" style="height: 400px;"></div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-lg-6">
+                    <div class="chart-container">
+                      <h4>Amino Acid Changes</h4>
+                      <div id="all-amino-acids-chart" style="height: 400px;"></div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-lg-6">
+                    <div class="chart-container">
+                      <h4>Gene Symbols</h4>
+                      <div id="all-gene-symbol-chart" style="height: 400px;"></div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-lg-6">
+                    <div class="chart-container">
+                      <h4>Swiss-Prot Proteins</h4>
+                      <div id="all-swissprot-chart" style="height: 400px;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- PPI Variants Tab -->
+              <div class="tab-pane fade" id="ppi-charts" role="tabpanel" aria-labelledby="ppi-tab">
+                <div class="row g-4 mt-3">
+                  <div class="col-12 col-lg-6">
+                    <div class="chart-container">
+                      <h4>Nucleotide Substitutions (AA Changes)</h4>
+                      <div id="ppi-aa-change-chart" style="height: 400px;"></div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-lg-6">
+                    <div class="chart-container">
+                      <h4>Amino Acid Changes</h4>
+                      <div id="ppi-amino-acids-chart" style="height: 400px;"></div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-lg-6">
+                    <div class="chart-container">
+                      <h4>Gene Symbols</h4>
+                      <div id="ppi-gene-symbol-chart" style="height: 400px;"></div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-lg-6">
+                    <div class="chart-container">
+                      <h4>Swiss-Prot Proteins</h4>
+                      <div id="ppi-swissprot-chart" style="height: 400px;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Non-PPI Variants Tab -->
+              <div class="tab-pane fade" id="non-ppi-charts" role="tabpanel" aria-labelledby="non-ppi-tab">
+                <div class="row g-4 mt-3">
+                  <div class="col-12 col-lg-6">
+                    <div class="chart-container">
+                      <h4>Nucleotide Substitutions (AA Changes)</h4>
+                      <div id="non_ppi-aa-change-chart" style="height: 400px;"></div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-lg-6">
+                    <div class="chart-container">
+                      <h4>Amino Acid Changes</h4>
+                      <div id="non_ppi-amino-acids-chart" style="height: 400px;"></div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-lg-6">
+                    <div class="chart-container">
+                      <h4>Gene Symbols</h4>
+                      <div id="non_ppi-gene-symbol-chart" style="height: 400px;"></div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-lg-6">
+                    <div class="chart-container">
+                      <h4>Swiss-Prot Proteins</h4>
+                      <div id="non_ppi-swissprot-chart" style="height: 400px;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
 
 <!-- Starter Section Section -->
     <section id="starter-section" class="starter-section section">
@@ -70,11 +237,12 @@ array_unshift($aminioAcidData, $header);
       <div class="container" data-aos="fade-up">
         <div class="row g-3 align-items-center">
 <!-- ECharts for bar plot -->
-          <div class="cols-12 col-md-12" id="snpClassDistBarChart" style="height:420px;"></div>
+          <!-- <div class="cols-12 col-md-12" id="snpClassDistBarChart" style="height:420px;"></div> -->
         <script>
 (function(){
                 // SNP classes (ordered, top = largest)
-                // $snpData first row is header, the 1st column is the SNP class, the 2nd column is the count
+                // Use all_AA_change_statistic.csv data
+                <?php $snpData = $csvData['all_AA_change'] ?? []; ?>
                 
     const snpClasses = [
         <?php
@@ -163,10 +331,12 @@ array_unshift($aminioAcidData, $header);
 <!-- END ECharts for bar plot -->
 
           <!-- Amino Acid Frequency Distribution Chart -->
-          <div id="aaChangesChart" class="cols-12 col-md-12" style="height:420px;"></div>
+          <!-- <div id="aaChangesChart" class="cols-12 col-md-12" style="height:420px;"></div> -->
         <script>
           (function(){
                 // Label list (ordered top → bottom)
+                // Use all_Amino_acids_statistic.csv data
+                <?php $aminioAcidData = getTopItems($csvData['all_Amino_acids'] ?? [], 10); ?>
     const aaChanges = [
         <?php
         $changes = [];
@@ -253,7 +423,7 @@ array_unshift($aminioAcidData, $header);
 <!-- END Amino Acid Frequency Distribution Chart -->
 
   <!-- SNP Class Distribution Chart -->
-  <div id="snpClassDistChart" class="cols-12 col-md-12" style="height:420px;"></div>
+  <!-- <div id="snpClassDistChart" class="cols-12 col-md-12" style="height:420px;"></div> -->
   <script>
     (function(){
     // Data sources (x-axis)
@@ -394,7 +564,7 @@ array_unshift($aminioAcidData, $header);
           columnDefs: [
           ],
           fixedColumns: {
-            left: 1,
+            left: 2,
             right: 0
           },
       });
@@ -408,6 +578,176 @@ array_unshift($aminioAcidData, $header);
 
   <?php include 'includes/footer.php'; ?>
   <?php include 'includes/scripts.php'; ?>
+
+  <!-- Chart Initialization Scripts -->
+  <script>
+  // Helper function to create chart data from CSV
+  function createChartData(csvData, maxItems = 15) {
+    if (!csvData || csvData.length <= 1) return { labels: [], values: [] };
+
+    const data = csvData.slice(1); // Skip header
+    // Sort by count (second column) descending
+    data.sort((a, b) => parseFloat(b[1]) - parseFloat(a[1]));
+    const topData = data.slice(0, maxItems);
+
+    return {
+      labels: topData.map(row => row[0]),
+      values: topData.map(row => parseFloat(row[1])),
+      percentages: topData.map(row => parseFloat(row[2]))
+    };
+  }
+
+  // Helper function to create ECharts option
+  function createBarChartOption(title, data, colorPalette) {
+    return {
+      title: {
+        text: title,
+        left: 'center',
+        top: 10,
+        textStyle: { fontSize: 16 }
+      },
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: { type: 'shadow' }
+      },
+      grid: {
+        left: '15%',
+        right: '10%',
+        top: 60,
+        bottom: 40
+      },
+      xAxis: {
+        type: 'value',
+        name: 'Count',
+        nameLocation: 'middle',
+        nameGap: 30
+      },
+      yAxis: {
+        type: 'category',
+        data: data.labels,
+        name: 'Categories',
+        nameGap: 20
+      },
+      series: [{
+        type: 'bar',
+        data: data.values.map((v, i) => ({
+          value: v,
+          itemStyle: { color: colorPalette[i % colorPalette.length] }
+        })),
+        label: {
+          show: true,
+          position: 'right',
+          formatter: '{c}'
+        },
+        barWidth: 20
+      }]
+    };
+  }
+
+  // Color palettes
+  const colorPalettes = {
+    aa_change: ['#5DAE95', '#F4A261', '#E9C46A', '#E76F51', '#5DAE95', '#F4A261', '#F4A261', '#5DAE95', '#E76F51', '#E9C46A', '#E76F51', '#E9C46A'],
+    amino_acids: ['#5DAE95', '#8BB68A', '#B7C27B', '#E1C870', '#F2B66A', '#E68A54', '#E07A47', '#D7684A', '#D45E47', '#CC5240'],
+    genes: ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf'],
+    proteins: ['#4e79a7', '#f28e2c', '#e15759', '#76b7b2', '#59a14f', '#edc949', '#af7aa1', '#ff9da7', '#9c755f', '#bab0ab']
+  };
+
+  // Initialize charts when DOM is ready
+  document.addEventListener('DOMContentLoaded', function() {
+    // Chart data from PHP
+    const chartData = {
+      all: {
+        aa_change: <?php echo json_encode($csvData['all_AA_change'] ?? []); ?>,
+        amino_acids: <?php echo json_encode($csvData['all_Amino_acids'] ?? []); ?>,
+        gene_symbol: <?php echo json_encode($csvData['all_Gene_symbol'] ?? []); ?>,
+        swissprot: <?php echo json_encode($csvData['all_SWISSPROT'] ?? []); ?>
+      },
+      ppi: {
+        aa_change: <?php echo json_encode($csvData['ppi_AA_change'] ?? []); ?>,
+        amino_acids: <?php echo json_encode($csvData['ppi_Amino_acids'] ?? []); ?>,
+        gene_symbol: <?php echo json_encode($csvData['ppi_Gene_symbol'] ?? []); ?>,
+        swissprot: <?php echo json_encode($csvData['ppi_SWISSPROT'] ?? []); ?>
+      },
+      'non_ppi': {
+        aa_change: <?php echo json_encode($csvData['non_ppi_AA_change'] ?? []); ?>,
+        amino_acids: <?php echo json_encode($csvData['non_ppi_Amino_acids'] ?? []); ?>,
+        gene_symbol: <?php echo json_encode($csvData['non_ppi_Gene_symbol'] ?? []); ?>,
+        swissprot: <?php echo json_encode($csvData['non_ppi_SWISSPROT'] ?? []); ?>
+      }
+    };
+
+    // Initialize all charts
+    const categories = ['all', 'ppi', 'non_ppi'];
+    const dataTypes = ['aa_change', 'amino_acids', 'gene_symbol', 'swissprot'];
+    const chartIds = {
+      aa_change: ['aa-change-chart', 'amino-acids-chart', 'gene-symbol-chart', 'swissprot-chart'],
+      amino_acids: ['aa-change-chart', 'amino-acids-chart', 'gene-symbol-chart', 'swissprot-chart'],
+      gene_symbol: ['aa-change-chart', 'amino-acids-chart', 'gene-symbol-chart', 'swissprot-chart'],
+      swissprot: ['aa-change-chart', 'amino-acids-chart', 'gene-symbol-chart', 'swissprot-chart']
+    };
+
+    categories.forEach(category => {
+      dataTypes.forEach((dataType, index) => {
+        const chartId = `${category}-${chartIds[dataType][index]}`;
+        const element = document.getElementById(chartId);
+        if (element && chartData[category][dataType]) {
+          const data = createChartData(chartData[category][dataType]);
+
+          const title = dataType.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase());
+          const option = createBarChartOption(`Top ${title}`, data, colorPalettes[dataType] || colorPalettes.genes);
+
+          const chart = echarts.init(element);
+          chart.setOption(option);
+        }
+      });
+    });
+
+    // Create thumbnail charts for tab headers
+    function createThumbnailChart(containerId, data, color) {
+      const element = document.getElementById(containerId);
+      if (!element || !data) return;
+
+      const thumbnailData = createChartData(data, 3); // Only top 3 for thumbnail
+      const option = {
+        grid: { left: 5, right: 5, top: 5, bottom: 5 },
+        xAxis: { show: false, type: 'value' },
+        yAxis: { show: false, type: 'category', data: thumbnailData.labels },
+        series: [{
+          type: 'bar',
+          data: thumbnailData.values.map(v => ({ value: v, itemStyle: { color: color } })),
+          barWidth: 8
+        }]
+      };
+
+      const chart = echarts.init(element, null, { width: 80, height: 40 });
+      chart.setOption(option);
+    }
+
+    // Create thumbnails for each tab
+    createThumbnailChart('all-preview', chartData.all.aa_change, '#007bff');
+    createThumbnailChart('ppi-preview', chartData.ppi.aa_change, '#28a745');
+    createThumbnailChart('non-ppi-preview', chartData['non_ppi'].aa_change, '#dc3545');
+
+    // Handle tab changes for lazy loading
+    const tabButtons = document.querySelectorAll('#chartTabs button[data-bs-toggle="tab"]');
+    tabButtons.forEach(button => {
+      button.addEventListener('shown.bs.tab', function(event) {
+        // Resize charts in the active tab to ensure proper display
+        const targetId = event.target.getAttribute('data-bs-target').substring(1);
+        const tabPane = document.getElementById(targetId);
+        if (tabPane) {
+          const charts = tabPane.querySelectorAll('[id$="-chart"]');
+          charts.forEach(chartElement => {
+            const chart = echarts.getInstanceByDom(chartElement);
+            if (chart) {
+              chart.resize();
+            }
+          });
+        }
+      });
+    });
+  });
+  </script>
 
 </body>
 
