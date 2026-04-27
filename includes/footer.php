@@ -88,9 +88,9 @@ token_id = getCookieByName('PHPSESSID');
     },
     auth: {
       type: 'token',
-      token: 'pat_NNHjBcN3DWv9ParIphjqmBndk7VKFXKO80dkCok9HLQDKY8tGoPl2jvMJTzT9E4M',
+      token: 'pat_Y9u7hySPFzXK6OSVY5iSLf2zmJHn7qlB6Em78ZJE1Nuo9NeOR8ygyG9piH3ESUyy',
       onRefreshToken: function () {
-        return 'pat_NNHjBcN3DWv9ParIphjqmBndk7VKFXKO80dkCok9HLQDKY8tGoPl2jvMJTzT9E4M'
+        return 'pat_Y9u7hySPFzXK6OSVY5iSLf2zmJHn7qlB6Em78ZJE1Nuo9NeOR8ygyG9piH3ESUyy'
       }
     },
     userInfo: {
