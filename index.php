@@ -19,9 +19,9 @@
         <div class="row align-items-center">
           <div class="col-lg-7">
             <div class="hero-content" data-aos="fade-right" data-aos-delay="200">
-              <span class="subtitle">The First Proteome-Wide Atlas of Protein-Protein Interaction Interfaces and Pathogenic Mutations.</span>
-              <h1>Protein-Protein Interaction</h1>
-              <p>Protein–protein interactions (PPIs) are the physical contacts formed between two or more protein molecules, allowing them to work together to carry out essential biological functions. These interactions regulate nearly every cellular process—such as signaling, metabolism, immune response, and gene expression. Understanding PPIs helps researchers uncover how cells function, how diseases develop, and how new therapeutic strategies can be designed.</p>
+              <span class="subtitle">THE FIRST PROTEOME-WIDE ATLAS OF PROTEIN-PROTEIN INTERACTION INTERFACES AND HUMAN GENETIC MUTATIONS.</span>
+              <h1>Proteome-wide Interaction Variants Database</h1>
+              <p>IntVar is an integrative resource for exploring the proteome-scale intersection of protein-protein interaction (PPI) interfaces and human genetic diversity. Leveraging the deep learning-based predictor ProteinIS alongside high-resolution structural data, the platform offers multi-level annotations of PPI sites. By mapping genetic variants onto interfaces, IntVar enables intuitive visualization of their positional relationships, providing open data resources to characterize how genetic diversity impacts the human interactome.</p>
 
               <div class="hero-buttons">
                 <a href="#" class="btn-primary">Submit Prediction Task</a>
