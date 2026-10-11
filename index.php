@@ -63,7 +63,7 @@
 
           <div class="col-lg-5" data-aos="fade-left" data-aos-delay="300">
             <div class="hero-image">
-              <img src="assets/img/Brief-introduction-of-Protein-Protein-Interaction-0.png" alt="Brief-introduction-of-Protein-Protein-Interaction-0" class="img-fluid">
+              <img src="assets/img/database.png" alt="database" class="img-fluid">
               <div class="image-badge">
                 <span>PPI_esm2_t33_650M_UR50D</span>
                 <p>a deep-learning model used for predicting protein–protein interactions (PPIs). It is built on top of ESM-2, a family of protein language models developed by Meta AI.</p>
