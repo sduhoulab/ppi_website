@@ -43,45 +43,42 @@
           <div class="content-section">
             <h2>1. Introduction</h2>
             <p>
-              We have developed a sequence-based protein-protein interaction (PPI) site prediction tool. Through systematic evaluation of multiple pre-trained models and hyperparameter optimization, we selected the best-performing model, which has been made publicly available on Hugging Face. Our predictor requires only the target protein sequence as input (no binding partner information needed), with benchmark tests demonstrating excellent prediction performance.
+             IntVar (Proteome-wide Interaction Variants Database) is a comprehensive online platform designed to support high-throughput, sequence-based prediction of protein-protein interaction (PPI) sites and provide a systematical repository for interface residues and their mutations.
 </p>
             <p>
-             Using this predictor, we conducted a comprehensive analysis of 20,841 human protein sequences at the whole-proteome scale. All prediction results have been standardized and integrated into our web-accessible database. We have also incorporated variant data from three authoritative databases: ClinVar, gnomAD, and UK Biobank.
+             Unlike traditional structure-dependent methods, IntVar features ProteinIS, a core prediction framework built upon protein language models (pLMs). Taking only a single amino acid sequence as input, ProteinIS efficiently and accurately executes high-throughout PPI site prediction. By capturing contextual dependencies and spatial geometric features among residues, ProteinIS overcomes the heavy reliance of conventional approaches on high-resolution experimental structures or homologous templates, thereby demonstrating exceptional generalization capability and prediction performance.
+</p>
+            <p>
+             Powered by the ProteinIS framework, the platform maps the human PPI interface landscape at the proteome-wide level and systematically integrates massive, multi-dimensional germline mutation annotation datasets (totaling over 7.6 million records) sourced from ClinVar, gnomAD, and UK Biobank.
+</p>
+            <p>
+             IntVar provides global researchers with intuitive, interactive tools for data exploration and visualization. Users can submit sequences via the Prediction module for online PPI site prediction, seamlessly query proteome-wide predictions and multi-source mutation annotations via the Proteome and Mutation modules, and gain deep insights into interface perturbation mechanisms combined with structural visualization. Meanwhile, all predictive and annotative datasets are available for bulk download under the Download page, serving as a robust resource for investigators exploring protein architecture, interaction networks, and disease-associated molecular mechanisms.
 </p>
           </div>
 
           <!-- Information Collection -->
           <div class="content-section">
             <h2>2. Mutation</h2>
-            <p>Variants were annotated using Variant Effect Predictor (VEP) to obtain corresponding amino acid change information, enabling assessment of their potential impact on PPI sites. The dataset includes these key fields:</p>
-
+            <p>Variants were annotated using the Variant Effect Predictor (VEP) to retrieve corresponding amino acid substitution profiles, and subsequently evaluated by ProteinIS to classify residues into PPI or non-PPI sites, thereby facilitating the systematic assessment of their functional impact on protein interaction interfaces. The dataset includes these key fields:</p>
             
             <ul>
-              <li>Core Information: POS (genomic position)、Uploaded_variation (variant ID)、REF/ALT (nucleotide change)</li>
-              <li>Clinical Annotation: CLNREVSTAT (ClinVar-specific review status)、clin_sig (clinical significance)、Consequence (variant effect)</li>
-              <li>Protein Impact: Protein (Swissprot)、Protein_position (amino acid position)、Amino_acids (residue change)</li>
-              <li>Functional Predictions: SIFT/PolyPhen scores and prediction types</li>
-              <li>PPI : interaction site prediction</li>
-              <li>Structural Mapping (3Dmapper_result): 
-                <ul>
-                  <li>UniProt sequences were mapped to PDB structures through sequence alignment</li>
-                  <li>Thresholds were set for sequence identity (Pident) and coverage</li>
-                  <li>The PDB structure with highest sequence identity was selected</li>
-                  <li>Mapped positions were classified as:Structure (structural region)、Interface (interaction interface)、Unmap (unmapped)、	Noncoding (non-coding region)</li>
-                </ul>
-              </li>
-            </ul>
-            Additionally, we integrated AlphaFold-predicted human protein interactome data (Huri/Humap), applying the same analysis pipeline with additional pDockQ score thresholds for interaction reliability assessment.
+              <li>Core Information: CHROM, POS (genomic position), Uploaded_variation (variant ID), REF/ALT (nucleotide change), Gene_symbol.</li>
+              <li>Clinical Annotation: CLNREVSTAT (ClinVar-specific review status), clin_sig (clinical significance), Consequence (variant effect).</li>
+              <li>Protein Impact: Protein (Swiss-Prot ID), Protein_position (amino acid position), Amino_acids (residue change).</li>
+              <li>Functional Predictions: SIFT/PolyPhen scores and prediction types.</li>
+              <li>PPI: Interaction site predictions generated by our model (ProteinIS), where 0 denotes non-interaction sites and 1 denotes interaction sites.</li>
+              <li>Structural Mapping (3Dmapper_result): We incorporate results from 3Dmapper (maps variants into structures). Mapped positions were classified as: Structure (structural region), Interface (interaction interface), or Unmap (unmapped).</li>
+
           </div>
 
             <div class="content-section">
               <h2>3. Proteome</h2>
-              <p>We apply PPI site predictions for all 20,841 human proteins.</p>
+              <p>PPI site predictions were applied to all 20,656 human proteins. Dedicated pages are established for individual protein, offering basic information, functional descriptions, domain annotations (retrieved from InterProScan), 3D structural visualization, curated protein interaction pairs (derived from experimental PDB entries alongside high-confidence interaction pairs from HuRI and hu.map), and multi-source PPI site annotations (from experimental structures, AlphaFold-predicted complexes of HuRI/hu.map high-quality interaction pairs, and our computational predictions).</p>
             </div>
 
             <div class="content-section">
               <h2>4. Download</h2>
-              <p>Bulk downloads available in CSV format.</p>
+              <p>Bulk downloads are available in CSV format. This section provides mutation interface annotation results from the ClinVar, gnomAD, and UK Biobank databases, alongside prediction results for all 20,656 proteins in the human proteome.</p>
             </div> 
 
 
