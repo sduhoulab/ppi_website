@@ -36,10 +36,10 @@
                 <span class="project-category">Open Access</span>
                 <span class="project-status completed">Completed</span>
               </div>
-              <h3 class="project-title">Variant Web Clinvar </h3>
+              <h3 class="project-title">ClinVar Interface Variant Annotations </h3>
               <div class="project-details">
                 <div class="project-info">
-                  <p>Variant Web Clinvar Description.</p>
+                  <p>Contains germline missense mutation data retrieved from the ClinVar database (October 2024 release; review status ≥ 1 star), mapped with interface annotations.</p>
                   <div class="project-specs">
                     <span class="spec-item">
                       <i class="bi bi-droplet"></i>
@@ -81,10 +81,10 @@
                 <span class="project-category">Open Access</span>
                 <span class="project-status completed">Completed</span>
               </div>
-              <h3 class="project-title">Variant Web Gnomad</h3>
+              <h3 class="project-title">gnomAD Interface Variant Annotations</h3>
               <div class="project-details">
                 <div class="project-info">
-                  <p>Variant Web Gnomad.</p>
+                  <p>Integrates PASS-filtered missense variant data from gnomAD (v2.1.1), annotated with interfaces.</p>
                   <div class="project-specs">
                     <span class="spec-item">
                       <i class="bi bi-tags"></i>
@@ -126,10 +126,10 @@
                 <span class="project-category">Open Access</span>
                 <span class="project-status completed">Completed</span>
               </div>
-              <h3 class="project-title">Variant Web UKB</h3>
+              <h3 class="project-title">UK Biobank Interface Variant Annotations</h3>
               <div class="project-details">
                 <div class="project-info">
-                  <p>Variant Web UKB.</p>
+                  <p>Aggregates whole-exome sequencing data from 50,000 individuals in the UK Biobank (filtering exclusively for PASS missense variants), including interface annotations.</p>
                   <div class="project-specs">
                     <span class="spec-item">
                       <i class="bi bi-droplet"></i>
@@ -171,10 +171,10 @@
                 <span class="project-category">Open Access</span>
                 <span class="project-status completed">Completed</span>
               </div>
-              <h3 class="project-title">Variant All</h3>
+              <h3 class="project-title">All Interface Variant Annotations </h3>
               <div class="project-details">
                 <div class="project-info">
-                  <p>Variant All.</p>
+                  <p>Comprehensive variant data mapped to interface sites across ClinVar, gnomAD, and UK Biobank to evaluate functional impact on protein interactions.</p>
                   <div class="project-specs">
                     <span class="spec-item">
                       <i class="bi bi-droplet"></i>
