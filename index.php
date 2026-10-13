@@ -23,9 +23,13 @@
               <h1>Proteome-wide Interaction Variants Database</h1>
               <p>IntVar is an integrative resource for exploring the proteome-scale intersection of protein-protein interaction (PPI) interfaces and human genetic diversity. Leveraging the deep learning-based predictor ProteinIS alongside high-resolution structural data, the platform offers multi-level annotations of PPI sites. By mapping genetic variants onto interfaces, IntVar enables intuitive visualization of their positional relationships, providing open data resources to characterize how genetic diversity impacts the human interactome.</p>
 
-              <div class="hero-buttons">
-                <a href="#" class="btn-primary">Submit Prediction Task</a>
-                <a href="#" class="btn-secondary">Explore Our Datasets</a>
+              <div class="hero-buttons dropdown">
+                <a href="predictor.php" class="btn-primary">Submit Prediction Task</a>
+                <button class="btn-secondary dropdown-toggle" type="button" id="exploreDropdown" data-bs-toggle="dropdown" aria-expanded="false">Explore Our Datasets</button>
+                <ul class="dropdown-menu" aria-labelledby="exploreDropdown">
+                   <li><a class="dropdown-item" href="proteome.php">Explore human proteome</a></li>
+                   <li><a class="dropdown-item" href="mutation.php">Explore genetic mutations</a></li>
+                </ul>
               </div>
 
               <div class="trust-badges">
